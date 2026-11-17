@@ -1,0 +1,240 @@
+/* Merge Conflict studio: a night office lit by a diff. Same theme as the games. */
+:root {
+  --bg: #0a0d18;
+  --panel: #141a2b;
+  --text: #e6ebf5;
+  --muted: #8b93ad;
+  --ours: #3ddc84; /* HEAD */
+  --theirs: #ff3d6e; /* incoming */
+  --conflict: #ffd23f;
+  --cyan: #3ec5ff;
+  --display: 'Bungee', 'Chakra Petch', sans-serif;
+  --ui: 'Chakra Petch', ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ui);
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    linear-gradient(rgba(62, 197, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(62, 197, 255, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+a {
+  color: inherit;
+}
+
+.ours {
+  color: var(--ours);
+}
+.theirs {
+  color: var(--theirs);
+}
+
+.hero {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 96px 16px 56px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  font-size: 13px;
+}
+
+h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(56px, 12vw, 128px);
+  line-height: 0.95;
+  margin: 18px 0;
+}
+
+.pitch {
+  font-size: clamp(18px, 2.6vw, 22px);
+  color: var(--text);
+  opacity: 0.85;
+  margin: 28px 0 24px;
+}
+
+.steps {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 13px;
+}
+.steps b {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-right: 6px;
+  background: var(--conflict);
+  color: var(--bg);
+  clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
+}
+
+main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px 64px;
+}
+
+h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 28px;
+  margin: 0 0 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--panel);
+  border: 2px solid rgba(230, 235, 245, 0.08);
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.card.live:hover {
+  border-color: var(--conflict);
+  transform: translateY(-2px);
+}
+.card.live {
+  grid-column: span 2;
+}
+@media (max-width: 700px) {
+  .card.live {
+    grid-column: span 1;
+  }
+}
+
+.media {
+  display: block;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.media.placeholder {
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-size: 48px;
+  color: rgba(230, 235, 245, 0.12);
+  background: repeating-linear-gradient(-45deg, #10152a, #10152a 12px, #121935 12px, #121935 24px);
+}
+
+.body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 24px;
+  margin: 0;
+  color: var(--conflict);
+}
+.soon h3 {
+  color: var(--text);
+}
+.tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+.body p {
+  margin: 0;
+  color: var(--text);
+  opacity: 0.8;
+  line-height: 1.5;
+}
+.actions {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 9px 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 13px;
+  text-decoration: none;
+  background: rgba(230, 235, 245, 0.1);
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+}
+.btn:hover {
+  background: rgba(230, 235, 245, 0.2);
+}
+.btn.primary {
+  background: var(--conflict);
+  color: var(--bg);
+}
+.btn.primary:hover {
+  filter: brightness(1.1);
+}
+.btn.disabled {
+  opacity: 0.45;
+}
+
+footer {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 14px;
+  border-top: 1px solid rgba(230, 235, 245, 0.08);
+}
+.muted {
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}

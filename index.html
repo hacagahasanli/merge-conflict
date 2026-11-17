@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Merge Conflict · settle it</title>
+    <meta
+      name="description"
+      content="Some conflicts can't be resolved in code. Fast 1v1 browser games for settling it with your coworkers: pick a game, send a link, settle it."
+    />
+    <meta property="og:title" content="Merge Conflict" />
+    <meta property="og:description" content="Some conflicts can't be resolved in code. Pick a game, send a link, settle it." />
+    <meta property="og:image" content="/assets/floor42.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="eyebrow"><span class="ours">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span></div>
+      <h1>
+        <span class="ours">MERGE</span><br />
+        <span class="theirs">CONFLICT</span>
+      </h1>
+      <div class="eyebrow"><span class="theirs">&gt;&gt;&gt;&gt;&gt;&gt;&gt; their-branch</span></div>
+      <p class="pitch">
+        Some conflicts can't be resolved in code.<br />
+        Pick a game, send your coworker a link, settle it.
+      </p>
+      <div class="steps">
+        <span><b>1</b> pick a game</span>
+        <span><b>2</b> send the link</span>
+        <span><b>3</b> settle it</span>
+      </div>
+    </header>
+
+    <main>
+      <h2>Games</h2>
+      <section class="grid">
+        <article class="card live">
+          <a class="media" href="https://floor42.mergeconflict.gg" aria-label="Play Floor 42">
+            <img src="/assets/floor42.gif" alt="Floor 42: two developers shooting it out across an office at night" loading="lazy" />
+          </a>
+          <div class="body">
+            <div class="row">
+              <h3>Floor 42</h3>
+              <span class="tag">1v1 · online</span>
+            </div>
+            <p>
+              Code review got personal. Two developers, one floor of guns, and the meeting table is your only cover. Two
+              hits and you're out.
+            </p>
+            <div class="actions">
+              <a class="btn primary" href="https://floor42.mergeconflict.gg/play">Play online</a>
+              <a class="btn" href="https://github.com/hacagahasanli/floor-42">Source</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card soon">
+          <div class="media placeholder" aria-hidden="true">
+            <span>&lt;&lt;&lt;&lt;</span>
+          </div>
+          <div class="body">
+            <div class="row">
+              <h3>Parking Lot</h3>
+              <span class="tag">in the garage</span>
+            </div>
+            <p>Two company cars, one parking space, no insurance. Ram first, file the incident report later.</p>
+            <div class="actions"><span class="btn disabled">Coming soon</span></div>
+          </div>
+        </article>
+
+        <article class="card soon">
+          <div class="media placeholder" aria-hidden="true">
+            <span>&gt;&gt;&gt;&gt;</span>
+          </div>
+          <div class="body">
+            <div class="row">
+              <h3>Your idea</h3>
+              <span class="tag">open</span>
+            </div>
+            <p>Got a conflict that needs its own game? Open an issue and pitch it.</p>
+            <div class="actions">
+              <a class="btn" href="https://github.com/hacagahasanli/merge-conflict/issues/new">Pitch a game</a>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span>Merge Conflict · made by <a href="https://github.com/hacagahasanli">hacagahasanli</a></span>
+      <span class="muted">Every game is free, runs in the browser, and needs nothing but a link.</span>
+    </footer>
+  </body>
+</html>
