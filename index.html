@@ -36,10 +36,32 @@
         </h1>
         <div class="eyebrow theirs">&gt;&gt;&gt;&gt;&gt;&gt;&gt; their-branch</div>
         <p class="pitch">Some conflicts can't be resolved in code.<br />Send your coworker a link. Settle it.</p>
-        <div class="hero-actions">
-          <a class="btn big primary" href="https://floor-42.vercel.app/play">Play Floor 42 <span>1v1</span></a>
-          <a class="btn big hot" href="https://last-commit-standing.vercel.app/play">Play Last Commit Standing <span>up to 10</span></a>
-        </div>
+        <nav class="cards" aria-label="Games">
+          <a class="card" style="--accent: var(--conflict)" href="https://floor-42.vercel.app/play">
+            <span class="card-img"><img src="/assets/card-floor42.jpg" width="640" height="400" alt="Two office workers face off on a night-time office floor in Floor 42" decoding="async" /></span>
+            <span class="card-body">
+              <span class="card-name">Floor 42</span>
+              <span class="card-hook">Code review got personal.</span>
+              <span class="card-foot"><span class="tag">1v1</span><span class="go">Play &rarr;</span></span>
+            </span>
+          </a>
+          <a class="card" style="--accent: var(--hot)" href="https://last-commit-standing.vercel.app/play">
+            <span class="card-img"><img src="/assets/card-lcs.jpg" width="640" height="400" alt="Top-down view of a firefight on a grass field in Last Commit Standing" loading="lazy" decoding="async" /></span>
+            <span class="card-body">
+              <span class="card-name">Last Commit Standing</span>
+              <span class="card-hook">Ten developers. One merge.</span>
+              <span class="card-foot"><span class="tag">up to 10</span><span class="go">Play &rarr;</span></span>
+            </span>
+          </a>
+          <a class="card soon" style="--accent: var(--cyan)" href="#garage">
+            <span class="card-img"><img src="/assets/card-parking.jpg" width="640" height="400" alt="Two company cars at the start line of a busy parking lot in Parking Lot" loading="lazy" decoding="async" /></span>
+            <span class="card-body">
+              <span class="card-name">Parking Lot</span>
+              <span class="card-hook">Two company cars. One parking space.</span>
+              <span class="card-foot"><span class="tag">Coming soon</span><span class="go">See more &darr;</span></span>
+            </span>
+          </a>
+        </nav>
         <div class="steps">
           <span><b>1</b> pick a game</span>
           <span><b>2</b> send the link</span>
@@ -98,7 +120,7 @@
       </section>
 
       <!-- What's next. -->
-      <section class="garage">
+      <section class="garage" id="garage">
         <div class="garage-card">
           <div class="garage-art" aria-hidden="true">
             <div class="lot"><span class="car a"></span><span class="space">P</span><span class="car b"></span></div>
