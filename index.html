@@ -74,7 +74,7 @@
     <main>
       <!-- One full section per game, its own gameplay running behind it. -->
       <section class="game" id="floor-42" style="--accent: #ffd23f">
-        <video style="--ar: 920 / 560" src="/assets/floor42.mp4" poster="/assets/floor42.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+        <video style="--ar: 1828 / 1028" src="/assets/floor42.mp4" poster="/assets/floor42.jpg" width="1828" height="1028" muted loop playsinline preload="metadata" aria-hidden="true"></video>
         <div class="game-shade"></div>
         <div class="game-body">
           <div class="kicker">Game 01 · 1v1 office shootout</div>
@@ -96,7 +96,7 @@
       </section>
 
       <section class="game right" id="last-commit-standing" style="--accent: #ff6a3d">
-        <video src="/assets/last-commit-standing.mp4" poster="/assets/last-commit-standing.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+        <video src="/assets/last-commit-standing.mp4" poster="/assets/last-commit-standing.jpg" width="1920" height="1080" muted loop playsinline preload="metadata" aria-hidden="true"></video>
         <div class="game-shade"></div>
         <div class="game-body">
           <div class="kicker">Game 02 · battle royale</div>
@@ -120,7 +120,7 @@
       </section>
 
       <section class="game" id="parking-lot" style="--accent: #4fd1ff">
-        <video src="/assets/parking-lot.mp4" poster="/assets/parking-lot.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+        <video src="/assets/parking-lot.mp4" poster="/assets/parking-lot.jpg" width="1920" height="1080" muted loop playsinline preload="metadata" aria-hidden="true"></video>
         <div class="game-shade"></div>
         <div class="game-body">
           <div class="kicker">Game 03 · coming soon</div>
@@ -174,7 +174,7 @@
         }
         const io = new IntersectionObserver(
           (es) => es.forEach((e) => (e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause())),
-          { threshold: 0.15 },
+          { threshold: 0.15, rootMargin: '150px 0px' },
         );
         videos.forEach((v) => io.observe(v));
       })();
