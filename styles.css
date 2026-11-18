@@ -630,3 +630,376 @@ footer {
     transition: none !important;
   }
 }
+
+/* ---------- support the studio */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.conflict {
+  color: var(--conflict);
+}
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--conflict);
+  outline-offset: 3px;
+}
+.brand {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand img {
+  display: block;
+}
+.top-links {
+  display: flex;
+  gap: 18px;
+  text-transform: uppercase;
+}
+.top-links a {
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--muted);
+  padding: 6px 2px;
+}
+.top-links a:hover,
+.top-links a[aria-current] {
+  color: var(--conflict);
+}
+.top.solid {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero .top {
+  position: relative;
+}
+.top-links a.support-link {
+  color: var(--conflict);
+}
+.support {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 24px 72px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px 48px;
+  align-items: start;
+}
+.support-intro h1 {
+  font-size: clamp(44px, 7vw, 76px);
+}
+.support-intro .pitch {
+  font-size: 18px;
+  line-height: 1.55;
+  margin: 22px 0 0;
+  max-width: 440px;
+}
+.donate-card {
+  background: var(--panel);
+  clip-path: var(--cut);
+  padding: 28px;
+}
+.support h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 24px;
+  margin: 0 0 16px;
+}
+.chips {
+  border: 0;
+  padding: 0;
+  margin: 0 0 14px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.chip {
+  display: block;
+  cursor: pointer;
+}
+.chip input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.chip-in {
+  display: grid;
+  place-items: center;
+  gap: 2px;
+  padding: 12px 4px;
+  min-height: 76px;
+  background: rgba(230, 235, 245, 0.08);
+  border-bottom: 3px solid transparent;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  transition: transform 0.15s, background 0.15s;
+}
+.chip-in .emo {
+  font-size: 22px;
+  line-height: 1;
+}
+.chip-in b {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 20px;
+}
+.chip:hover .chip-in {
+  background: rgba(230, 235, 245, 0.16);
+  transform: translateY(-2px);
+}
+.chip input:checked + .chip-in {
+  background: var(--conflict);
+  color: var(--bg);
+  border-bottom-color: var(--theirs);
+}
+.chip input:focus-visible + .chip-in {
+  outline: 3px solid var(--ours);
+  outline-offset: 2px;
+}
+.custom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+.custom-box {
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+  border-left: 3px solid var(--ours);
+  padding: 0 10px;
+  width: 140px;
+}
+.custom-box i {
+  font-style: normal;
+  font-family: var(--display);
+  color: var(--text);
+}
+.custom input {
+  width: 100%;
+  min-height: 44px;
+  background: none;
+  border: 0;
+  color: var(--text);
+  font: 700 18px var(--ui);
+  padding: 0 4px 0 6px;
+  -moz-appearance: textfield;
+}
+.custom input::-webkit-outer-spin-button,
+.custom input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.custom input[aria-invalid='true'] {
+  color: var(--theirs);
+}
+.donate-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+.donate-row .btn.big {
+  min-height: 52px;
+}
+.hint {
+  margin: 14px 0 6px;
+  font-weight: 700;
+  color: var(--ours);
+  font-size: 15px;
+}
+.fine {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* the parking animation: a car pulls into the free bay and says thanks */
+.park {
+  position: relative;
+  width: 100px;
+  height: 64px;
+  flex: none;
+  overflow: hidden;
+}
+.park .bay {
+  position: absolute;
+  right: 4px;
+  top: 20px;
+  width: 56px;
+  height: 40px;
+  border: 3px dashed rgba(230, 235, 245, 0.5);
+}
+.park .car {
+  position: absolute;
+  left: 0;
+  top: 29px;
+  width: 40px;
+  height: 22px;
+  background: var(--ours);
+  border-radius: 6px;
+}
+.park .car::after {
+  content: '';
+  position: absolute;
+  inset: 4px 6px 4px 16px;
+  background: rgba(10, 13, 24, 0.6);
+  border-radius: 2px;
+}
+.park .thanks {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 64px;
+  text-align: center;
+  font-family: var(--display);
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--conflict);
+  opacity: 0;
+}
+.donate-row:hover .car,
+.donate-row:has(.btn:focus-visible) .car,
+.park.go .car {
+  animation: park-in 0.9s cubic-bezier(0.3, 0.7, 0.3, 1) forwards;
+}
+.donate-row:hover .thanks,
+.donate-row:has(.btn:focus-visible) .thanks,
+.park.go .thanks {
+  animation: thanks-in 0.4s 0.7s forwards;
+}
+@keyframes park-in {
+  to {
+    transform: translateX(48px);
+    background: var(--theirs);
+  }
+}
+@keyframes thanks-in {
+  from {
+    transform: translateY(6px);
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.pays {
+  grid-column: 1;
+}
+.pay-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+.pay-list li {
+  padding: 12px 14px;
+  background: rgba(20, 26, 43, 0.85);
+  border-left: 3px solid var(--ours);
+  line-height: 1.5;
+  color: var(--muted);
+}
+.pay-list li:nth-child(2) {
+  border-left-color: var(--conflict);
+}
+.pay-list li:nth-child(3) {
+  border-left-color: var(--theirs);
+}
+.pay-list b {
+  color: var(--text);
+}
+.pack {
+  grid-column: 2;
+}
+.pack p {
+  margin: -6px 0 16px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.pack-imgs {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
+}
+.pack-imgs img {
+  display: block;
+  height: auto;
+  border: 2px solid #232c47;
+}
+.pack-imgs img:first-child {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.pack-imgs img:last-child {
+  width: 22%;
+}
+
+/* support strip on the home page */
+.support-strip {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-top: 1px solid rgba(230, 235, 245, 0.08);
+}
+.support-strip .strip-text {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1 1 320px;
+}
+.support-strip img {
+  flex: none;
+}
+.support-strip h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 22px;
+  margin: 0 0 4px;
+}
+.support-strip p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .support {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 16px 20px 56px;
+    gap: 32px;
+  }
+  .pays,
+  .pack {
+    grid-column: 1;
+  }
+  .donate-card {
+    padding: 22px 18px;
+  }
+  .top {
+    padding: 14px 20px;
+  }
+  .support-strip {
+    padding: 32px 20px;
+  }
+}

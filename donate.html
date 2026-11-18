@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Support the studio · Merge Conflict</title>
+    <meta
+      name="description"
+      content="Merge Conflict makes free browser games for settling it with your coworkers. Buy the studio a coffee: pay what you want, from $1, and get a desktop and phone wallpaper pack. Payments handled by itch.io."
+    />
+    <meta property="og:title" content="Support the studio · Merge Conflict" />
+    <meta property="og:description" content="Our games are free. Servers, new games and late-night polish are not. Pay what you want, get a wallpaper pack." />
+    <meta property="og:image" content="/assets/wallpaper-desktop.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="support-page">
+    <nav class="top solid">
+      <a class="brand" href="/"><img src="/assets/logo-192.png" width="28" height="28" alt="" /><span><span class="ours">&lt;&lt;</span> MERGE <span class="theirs">CONFLICT</span></span></a>
+      <span class="top-links"><a href="/">Games</a><a href="/donate.html" aria-current="page">&#9749; Support</a></span>
+    </nav>
+
+    <main class="support">
+      <section class="support-intro">
+        <div class="eyebrow ours">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</div>
+        <h1><span class="ours">BUY THE</span><br /><span class="conflict">STUDIO</span><br /><span class="theirs">A COFFEE</span></h1>
+        <div class="eyebrow theirs">&gt;&gt;&gt;&gt;&gt;&gt;&gt; your-support</div>
+        <p class="pitch">Our games are free and always will be. Servers, new games and late-night polish are not. If we made your Monday better, help us make the next one.</p>
+      </section>
+
+      <section class="donate-card" aria-labelledby="amount-h">
+        <h2 id="amount-h">Pick an amount</h2>
+        <fieldset class="chips">
+          <legend class="sr-only">Donation amount</legend>
+          <label class="chip"><input type="radio" name="amt" value="3" /><span class="chip-in"><span class="emo" aria-hidden="true">&#9749;</span><b>$3</b></span></label>
+          <label class="chip"><input type="radio" name="amt" value="5" checked /><span class="chip-in"><span class="emo" aria-hidden="true">&#127829;</span><b>$5</b></span></label>
+          <label class="chip"><input type="radio" name="amt" value="10" /><span class="chip-in"><span class="emo" aria-hidden="true">&#128663;</span><b>$10</b></span></label>
+          <label class="chip"><input type="radio" name="amt" value="25" /><span class="chip-in"><span class="emo" aria-hidden="true">&#127918;</span><b>$25</b></span></label>
+        </fieldset>
+        <label class="custom" for="custom">
+          <span>Or your own amount</span>
+          <span class="custom-box"><i aria-hidden="true">$</i><input id="custom" type="number" inputmode="decimal" min="1" step="1" placeholder="Custom" aria-describedby="hint" /></span>
+        </label>
+
+        <div class="donate-row">
+          <a id="donate" class="btn big primary" href="https://mergeconflictgames.itch.io/support/purchase" target="_blank" rel="noopener">Donate on itch.io &rarr;</a>
+          <div class="park" id="park" aria-hidden="true">
+            <span class="bay"></span>
+            <span class="car"></span>
+            <span class="thanks">Thanks!</span>
+          </div>
+        </div>
+        <p class="hint" id="hint" aria-live="polite">Enter $5 on the next screen.</p>
+        <p class="fine">Payments are handled securely by itch.io; card and PayPal accepted; pay what you want, from $1.</p>
+      </section>
+
+      <section class="pays" aria-labelledby="pays-h">
+        <h2 id="pays-h">What your coffee pays for</h2>
+        <ul class="pay-list">
+          <li><b>Servers</b> for fast online matches, so a duel with a coworker never lags.</li>
+          <li><b>New games</b> like Parking Lot, from first idea to playable.</li>
+          <li><b>Late-night polish</b> on the bugs and little details nobody asked for.</li>
+        </ul>
+      </section>
+
+      <section class="pack" aria-labelledby="pack-h">
+        <h2 id="pack-h">Say thanks, get a pack</h2>
+        <p>Every donor gets the thank-you pack: a desktop and a phone wallpaper.</p>
+        <div class="pack-imgs">
+          <img src="/assets/wallpaper-desktop.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Desktop wallpaper preview: the Merge Conflict logo and the words Thanks for the coffee" />
+          <img src="/assets/wallpaper-phone.jpg" width="462" height="1000" loading="lazy" decoding="async" alt="Phone wallpaper preview: the Merge Conflict logo and the words Thanks for the coffee" />
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Merge Conflict · made by <a href="https://github.com/hacagahasanli">hacagahasanli</a></span>
+      <span class="muted"><a href="/">Back to the games</a></span>
+    </footer>
+
+    <script>
+      (() => {
+        const URL_BUY = 'https://mergeconflictgames.itch.io/support/purchase';
+        const radios = [...document.querySelectorAll('input[name=amt]')];
+        const custom = document.getElementById('custom');
+        const hint = document.getElementById('hint');
+        const btn = document.getElementById('donate');
+        const park = document.getElementById('park');
+        const fmt = (n) => '$' + (Number.isInteger(n) ? n : n.toFixed(2));
+        const amount = () => {
+          const c = parseFloat(custom.value);
+          if (custom.value !== '' && c >= 1) return c;
+          return Number((radios.find((r) => r.checked) || {}).value || 5);
+        };
+        const update = () => {
+          const bad = custom.value !== '' && !(parseFloat(custom.value) >= 1);
+          custom.setAttribute('aria-invalid', bad ? 'true' : 'false');
+          hint.textContent = bad ? 'The minimum is $1.' : 'Enter ' + fmt(amount()) + ' on the next screen.';
+        };
+        radios.forEach((r) => r.addEventListener('change', () => { custom.value = ''; update(); }));
+        custom.addEventListener('input', () => {
+          if (custom.value !== '') radios.forEach((r) => (r.checked = false));
+          else radios[1].checked = true;
+          update();
+        });
+        btn.addEventListener('click', (e) => {
+          park.classList.remove('go');
+          void park.offsetWidth;
+          park.classList.add('go');
+          // itch.io has no documented way to pre-fill the amount, so we only show it as a hint.
+          const w = window.open(URL_BUY + '?popup=1', 'itch_support', 'width=480,height=640,scrollbars=yes');
+          if (w) { e.preventDefault(); w.focus(); }
+        });
+      })();
+    </script>
+  </body>
+</html>

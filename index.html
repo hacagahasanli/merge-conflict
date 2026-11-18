@@ -17,6 +17,8 @@
       href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
@@ -25,8 +27,8 @@
       <video class="hero-video" src="/assets/hero.mp4" poster="/assets/hero.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
       <div class="hero-shade"></div>
       <nav class="top">
-        <span class="brand"><span class="ours">&lt;&lt;</span> MERGE <span class="theirs">CONFLICT</span></span>
-        <span class="live"><i></i> 2 games · free · in your browser</span>
+        <a class="brand" href="/"><img src="/assets/logo-192.png" width="28" height="28" alt="" /><span><span class="ours">&lt;&lt;</span> MERGE <span class="theirs">CONFLICT</span></span></a>
+        <span class="top-links"><span class="live"><i></i> 2 games · free · in your browser</span><a class="support-link" href="/donate.html">&#9749; Support</a></span>
       </nav>
       <div class="hero-body">
         <div class="eyebrow ours">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</div>
@@ -155,6 +157,17 @@
         </div>
       </section>
     </main>
+
+    <aside class="support-strip" id="support">
+      <div class="strip-text">
+        <img src="/assets/logo-192.png" width="56" height="56" loading="lazy" alt="" />
+        <div>
+          <h2>Support the studio</h2>
+          <p>Every game is free. Buy us a coffee for servers, new games and late-night polish, and get a wallpaper pack.</p>
+        </div>
+      </div>
+      <a class="btn big primary" href="/donate.html">&#9749; Support</a>
+    </aside>
 
     <footer>
       <span>Merge Conflict · made by <a href="https://github.com/hacagahasanli">hacagahasanli</a></span>

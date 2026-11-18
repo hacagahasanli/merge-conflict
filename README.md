@@ -33,6 +33,10 @@ npx serve .
 
 Live at [merge-conflict-drab.vercel.app](https://merge-conflict-drab.vercel.app) (Vercel). The `mergeconflict.gg` domain comes later.
 
+## Support the studio
+
+The games are free. If you want to help with servers and new games, [buy the studio a coffee](https://merge-conflict-drab.vercel.app/donate.html) (pay what you want, from $1, handled by [itch.io](https://mergeconflictgames.itch.io/support); donors get a wallpaper pack).
+
 ## Pitch a game
 
 Have a conflict that deserves its own game? [Open an issue](https://github.com/hacagahasanli/merge-conflict/issues/new).
