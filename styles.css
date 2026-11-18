@@ -46,29 +46,42 @@ a {
   overflow: hidden;
   isolation: isolate;
 }
+/* The video gets its own pane beside the text (never behind it), at its native 16:9 so the whole
+   level and every fighter stays in frame. Only the pane's edge next to the text is faded. */
 .hero-video,
 .game video {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  top: 50%;
+  width: 57%;
+  aspect-ratio: var(--ar, 16 / 9);
+  height: auto;
+  transform: translateY(-50%);
   object-fit: cover;
   z-index: -2;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%);
+  mask-image: linear-gradient(90deg, transparent, #000 3%);
+}
+.game.right video {
+  right: auto;
+  left: 0;
+  -webkit-mask-image: linear-gradient(270deg, transparent, #000 3%);
+  mask-image: linear-gradient(270deg, transparent, #000 3%);
 }
 .hero-shade {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background:
-    radial-gradient(ellipse 70% 60% at 50% 48%, rgba(10, 13, 24, 0.82), rgba(10, 13, 24, 0.35) 75%),
-    linear-gradient(to bottom, rgba(10, 13, 24, 0.6), transparent 20%, transparent 70%, var(--bg));
+  /* shade only the text side; the video side stays clear */
+  background: linear-gradient(90deg, var(--bg) 0%, rgba(10, 13, 24, 0.9) 40%, transparent 43%),
+    linear-gradient(to bottom, rgba(10, 13, 24, 0.6), transparent 18%, transparent 85%, var(--bg));
 }
 .hero-shade::after {
   /* Scanlines: a monitor in a dark office. */
   content: '';
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 3px);
+  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.12) 0 1px, transparent 1px 3px);
   pointer-events: none;
 }
 .top {
@@ -105,10 +118,11 @@ a {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  text-align: center;
-  padding: 24px 16px 64px;
+  text-align: left;
+  width: min(520px, 40vw);
+  padding: 24px 0 64px max(24px, 5vw);
 }
 .eyebrow {
   font-family: ui-monospace, monospace;
@@ -119,7 +133,7 @@ a {
 h1 {
   font-family: var(--display);
   font-weight: 400;
-  font-size: clamp(60px, 13vw, 156px);
+  font-size: clamp(44px, 5.4vw, 84px);
   line-height: 0.92;
   margin: 16px 0;
   text-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
@@ -137,12 +151,10 @@ h1 .theirs {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  justify-content: center;
 }
 .steps {
   display: flex;
   gap: 20px;
-  justify-content: center;
   flex-wrap: wrap;
   margin-top: 28px;
   color: rgba(230, 235, 245, 0.75);
@@ -235,21 +247,22 @@ h1 .theirs {
   border-top: 1px solid rgba(230, 235, 245, 0.08);
 }
 .game-shade {
+  /* only the text side; the video pane is never dimmed */
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(90deg, rgba(10, 13, 24, 0.94) 0%, rgba(10, 13, 24, 0.75) 38%, rgba(10, 13, 24, 0.05) 75%);
+  background: linear-gradient(90deg, var(--bg) 0%, var(--bg) 40%, transparent 43%);
 }
 .game.right .game-shade {
-  background: linear-gradient(270deg, rgba(10, 13, 24, 0.94) 0%, rgba(10, 13, 24, 0.75) 38%, rgba(10, 13, 24, 0.05) 75%);
+  background: linear-gradient(270deg, var(--bg) 0%, var(--bg) 40%, transparent 43%);
 }
 .game-body {
-  width: min(560px, 100%);
-  margin: 0 0 0 max(24px, 6vw);
+  width: min(480px, 36vw);
+  margin: 0 0 0 max(24px, 5vw);
   padding: 64px 0;
 }
 .game.right .game-body {
-  margin: 0 max(24px, 6vw) 0 auto;
+  margin: 0 max(24px, 5vw) 0 auto;
 }
 .kicker {
   font-size: 12px;
@@ -430,22 +443,49 @@ footer {
   }
 }
 
-@media (max-width: 800px) {
-  .game {
-    min-height: auto;
-    align-items: flex-end;
+@media (max-width: 900px) {
+  /* phones: the video sits above the text, full width, nothing over it */
+  .hero-video,
+  .game video,
+  .game.right video {
+    position: static;
+    order: 2;
+    width: 100%;
+    transform: none;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
-  .game video {
-    height: 46%;
+  .game video,
+  .game.right video {
+    order: 0;
   }
+  .top {
+    order: 1;
+  }
+  .hero-shade,
   .game-shade,
   .game.right .game-shade {
-    background: linear-gradient(to bottom, transparent 0%, rgba(10, 13, 24, 0.6) 30%, var(--bg) 46%);
+    display: none;
+  }
+  .hero-body {
+    order: 3;
+    width: 100%;
+    padding: 24px 20px 56px;
+  }
+  .scroll {
+    display: none;
+  }
+  .game,
+  .game.right {
+    min-height: auto;
+    flex-direction: column;
+    align-items: stretch;
   }
   .game-body,
   .game.right .game-body {
+    width: 100%;
     margin: 0;
-    padding: 34vh 20px 56px;
+    padding: 28px 20px 56px;
   }
   .garage {
     grid-template-columns: 1fr;
