@@ -19,7 +19,7 @@ Pick a game, send your rival a link, settle it. No installs, no accounts.
 | --- | --- | --- |
 | [**Floor 42**](https://floor-42.vercel.app) ([source](https://github.com/hacagahasanli/floor-42)) | Code review got personal. Two developers, one floor of guns, and the meeting table is your only cover. Two hits and you're out. | online 1v1 |
 | [**Last Commit Standing**](https://last-commit-standing.vercel.app) ([source](https://github.com/hacagahasanli/last-commit-standing)) | A battle royale for developers who never agree: ten of you parachute into the same countryside, the Deadline closes in, and only the last one standing gets to merge. | online, up to 10 |
-| **Parking Lot** | Two company cars, one parking space, no insurance. | in the garage |
+| **Parking Lot** ([source](https://github.com/hacagahasanli/parking-lot)) | Four company cars, one free space, no insurance. Touch nothing, park first, and climb a multi-storey car park one stage at a time. | coming soon |
 
 Every game lives in its own repo and is deployed on its own. This repo is the studio page that lists them.
 
