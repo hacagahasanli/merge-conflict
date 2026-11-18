@@ -6,11 +6,11 @@
     <title>Merge Conflict · settle it</title>
     <meta
       name="description"
-      content="Some conflicts can't be resolved in code. Fast browser games for settling it with your coworkers: a 1v1 office shootout and a ten-player battle royale. Pick a game, send a link, settle it."
+      content="Some conflicts can't be resolved in code. Free browser games for settling it with your coworkers: a 1v1 office shootout and a ten-player battle royale. Send a link, settle it."
     />
-    <meta property="og:title" content="Merge Conflict" />
-    <meta property="og:description" content="Some conflicts can't be resolved in code. Pick a game, send a link, settle it." />
-    <meta property="og:image" content="/assets/last-commit-standing.jpg" />
+    <meta property="og:title" content="Merge Conflict · settle it" />
+    <meta property="og:description" content="Some conflicts can't be resolved in code. Send your coworker a link and settle it." />
+    <meta property="og:image" content="/assets/hero.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,99 +20,105 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
+    <!-- The whole first screen is the games, playing. -->
     <header class="hero">
-      <div class="eyebrow"><span class="ours">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span></div>
-      <h1>
-        <span class="ours">MERGE</span><br />
-        <span class="theirs">CONFLICT</span>
-      </h1>
-      <div class="eyebrow"><span class="theirs">&gt;&gt;&gt;&gt;&gt;&gt;&gt; their-branch</span></div>
-      <p class="pitch">
-        Some conflicts can't be resolved in code.<br />
-        Pick a game, send your coworker a link, settle it.
-      </p>
-      <div class="steps">
-        <span><b>1</b> pick a game</span>
-        <span><b>2</b> send the link</span>
-        <span><b>3</b> settle it</span>
+      <video class="hero-video" src="/assets/hero.mp4" poster="/assets/hero.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
+      <div class="hero-shade"></div>
+      <nav class="top">
+        <span class="brand"><span class="ours">&lt;&lt;</span> MERGE <span class="theirs">CONFLICT</span></span>
+        <span class="live"><i></i> 2 games · free · in your browser</span>
+      </nav>
+      <div class="hero-body">
+        <div class="eyebrow ours">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</div>
+        <h1>
+          <span class="ours">MERGE</span><br />
+          <span class="theirs">CONFLICT</span>
+        </h1>
+        <div class="eyebrow theirs">&gt;&gt;&gt;&gt;&gt;&gt;&gt; their-branch</div>
+        <p class="pitch">Some conflicts can't be resolved in code.<br />Send your coworker a link. Settle it.</p>
+        <div class="hero-actions">
+          <a class="btn big primary" href="https://floor-42.vercel.app/play">Play Floor 42 <span>1v1</span></a>
+          <a class="btn big hot" href="https://last-commit-standing.vercel.app/play">Play Last Commit Standing <span>up to 10</span></a>
+        </div>
+        <div class="steps">
+          <span><b>1</b> pick a game</span>
+          <span><b>2</b> send the link</span>
+          <span><b>3</b> settle it</span>
+        </div>
       </div>
+      <a class="scroll" href="#floor-42" aria-label="See the games">▼</a>
     </header>
 
     <main>
-      <h2>Games</h2>
-      <!-- The games you can play now: a poster, and a few seconds of the real game on hover. -->
-      <section class="featured">
-        <article class="card live">
-          <a class="media" href="https://floor-42.vercel.app" aria-label="Play Floor 42">
-            <video src="/assets/floor42.mp4" poster="/assets/floor42.jpg" muted loop playsinline preload="none" aria-label="Floor 42: two developers shooting it out across an office at night"></video>
-          </a>
-          <div class="body">
-            <div class="row">
-              <h3>Floor 42</h3>
-              <span class="tag">1v1 · online</span>
-            </div>
-            <p>
-              Code review got personal. Two developers, one floor of guns, and the meeting table is your only cover. Two
-              hits and you're out.
-            </p>
-            <div class="actions">
-              <a class="btn primary" href="https://floor-42.vercel.app/play">Play online</a>
-              <a class="btn" href="https://github.com/hacagahasanli/floor-42">Source</a>
-            </div>
+      <!-- One full section per game, its own gameplay running behind it. -->
+      <section class="game" id="floor-42" style="--accent: #ffd23f">
+        <video src="/assets/floor42.mp4" poster="/assets/floor42.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+        <div class="game-shade"></div>
+        <div class="game-body">
+          <div class="kicker">Game 01 · 1v1 office shootout</div>
+          <h2>Floor 42</h2>
+          <p class="hook">Code review got personal.</p>
+          <p>Two developers, one floor of guns, and the meeting table is your only cover. Two hits and you're out. First to five KOs takes the merge.</p>
+          <ul class="facts">
+            <li><b>2</b> players</li>
+            <li><b>~3</b> minutes</li>
+            <li><b>7</b> guns</li>
+            <li><b>phone</b> ready</li>
+          </ul>
+          <div class="actions">
+            <a class="btn big primary" href="https://floor-42.vercel.app/play">Play online →</a>
+            <a class="btn big" href="https://floor-42.vercel.app/characters">Practice vs bot</a>
+            <a class="btn" href="https://github.com/hacagahasanli/floor-42">Source</a>
           </div>
-        </article>
-
-        <article class="card live">
-          <a class="media" href="https://last-commit-standing.vercel.app" aria-label="Play Last Commit Standing">
-            <video src="/assets/last-commit-standing.mp4" poster="/assets/last-commit-standing.jpg" muted loop playsinline preload="none" aria-label="Last Commit Standing: developers parachuting into a village"></video>
-          </a>
-          <div class="body">
-            <div class="row">
-              <h3>Last Commit Standing</h3>
-              <span class="tag">up to 10 · online</span>
-            </div>
-            <p>
-              A battle royale for developers who never agree. Ten of you parachute into the same countryside with a
-              pistol each, the Deadline closes in, and only the last one standing gets to merge.
-            </p>
-            <div class="actions">
-              <a class="btn primary" href="https://last-commit-standing.vercel.app/play">Play with friends</a>
-              <a class="btn" href="https://github.com/hacagahasanli/last-commit-standing">Source</a>
-            </div>
-          </div>
-        </article>
+        </div>
       </section>
 
-      <section class="grid">
-        <article class="card soon">
-          <div class="media placeholder" aria-hidden="true">
-            <span>&lt;&lt;&lt;&lt;</span>
+      <section class="game right" id="last-commit-standing" style="--accent: #ff6a3d">
+        <video src="/assets/last-commit-standing.mp4" poster="/assets/last-commit-standing.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+        <div class="game-shade"></div>
+        <div class="game-body">
+          <div class="kicker">Game 02 · battle royale</div>
+          <h2>Last Commit Standing</h2>
+          <p class="hook">Ten developers. One merge.</p>
+          <p>
+            Nobody agrees. Parachute into the same countryside with a pistol each, loot the farms and the river port, swim
+            the river, and stay inside the Deadline. Only the last commit standing gets merged.
+          </p>
+          <ul class="facts">
+            <li><b>2–10</b> players</li>
+            <li><b>bots</b> optional</li>
+            <li><b>~5</b> minutes</li>
+            <li><b>phone</b> ready</li>
+          </ul>
+          <div class="actions">
+            <a class="btn big hot" href="https://last-commit-standing.vercel.app/play">Play with friends →</a>
+            <a class="btn" href="https://github.com/hacagahasanli/last-commit-standing">Source</a>
           </div>
-          <div class="body">
-            <div class="row">
-              <h3>Parking Lot</h3>
-              <span class="tag">in the garage</span>
-            </div>
-            <p>Two company cars, one parking space, no insurance. Ram first, file the incident report later.</p>
-            <div class="actions"><span class="btn disabled">Coming soon</span></div>
-          </div>
-        </article>
+        </div>
+      </section>
 
-        <article class="card soon">
-          <div class="media placeholder" aria-hidden="true">
-            <span>&gt;&gt;&gt;&gt;</span>
+      <!-- What's next. -->
+      <section class="garage">
+        <div class="garage-card">
+          <div class="garage-art" aria-hidden="true">
+            <div class="lot"><span class="car a"></span><span class="space">P</span><span class="car b"></span></div>
           </div>
-          <div class="body">
-            <div class="row">
-              <h3>Your idea</h3>
-              <span class="tag">open</span>
-            </div>
-            <p>Got a conflict that needs its own game? Open an issue and pitch it.</p>
-            <div class="actions">
-              <a class="btn" href="https://github.com/hacagahasanli/merge-conflict/issues/new">Pitch a game</a>
-            </div>
+          <div class="garage-body">
+            <div class="kicker">Game 03 · in the garage</div>
+            <h2>Parking Lot</h2>
+            <p class="hook">Two company cars. One parking space. No insurance.</p>
+            <p>Ram first, file the incident report later.</p>
+            <span class="btn disabled">Coming soon</span>
           </div>
-        </article>
+        </div>
+        <div class="garage-card small">
+          <div class="garage-body">
+            <div class="kicker">Game 04 · yours?</div>
+            <h2>Your idea</h2>
+            <p>Got a conflict that needs its own game? Pitch it.</p>
+            <a class="btn" href="https://github.com/hacagahasanli/merge-conflict/issues/new">Pitch a game</a>
+          </div>
+        </div>
       </section>
     </main>
 
@@ -120,26 +126,23 @@
       <span>Merge Conflict · made by <a href="https://github.com/hacagahasanli">hacagahasanli</a></span>
       <span class="muted">Every game is free, runs in the browser, and needs nothing but a link.</span>
     </footer>
+
     <script>
-      // A few seconds of the real game: on hover with a mouse; on phones (no hover) while the card
-      // is on screen. Nothing moves for people who asked for reduced motion.
+      // Videos play while on screen (saves battery on phones), never for reduced motion.
       (() => {
-        if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        const videos = document.querySelectorAll('.card.live video');
-        const play = (v) => v.play().catch(() => {});
-        if (matchMedia('(hover: hover)').matches) {
+        const videos = document.querySelectorAll('video');
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
           videos.forEach((v) => {
-            const card = v.closest('.card');
-            card.addEventListener('mouseenter', () => play(v));
-            card.addEventListener('mouseleave', () => {
-              v.pause();
-              v.currentTime = 0;
-            });
+            v.removeAttribute('autoplay');
+            v.pause();
           });
-        } else {
-          const io = new IntersectionObserver((entries) => entries.forEach((e) => (e.isIntersecting ? play(e.target) : e.target.pause())), { threshold: 0.6 });
-          videos.forEach((v) => io.observe(v));
+          return;
         }
+        const io = new IntersectionObserver(
+          (es) => es.forEach((e) => (e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause())),
+          { threshold: 0.15 },
+        );
+        videos.forEach((v) => io.observe(v));
       })();
     </script>
   </body>
