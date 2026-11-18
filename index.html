@@ -6,11 +6,11 @@
     <title>Merge Conflict · settle it</title>
     <meta
       name="description"
-      content="Some conflicts can't be resolved in code. Fast 1v1 browser games for settling it with your coworkers: pick a game, send a link, settle it."
+      content="Some conflicts can't be resolved in code. Fast browser games for settling it with your coworkers: a 1v1 office shootout and a ten-player battle royale. Pick a game, send a link, settle it."
     />
     <meta property="og:title" content="Merge Conflict" />
     <meta property="og:description" content="Some conflicts can't be resolved in code. Pick a game, send a link, settle it." />
-    <meta property="og:image" content="/assets/floor42.png" />
+    <meta property="og:image" content="/assets/last-commit-standing.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -40,10 +40,11 @@
 
     <main>
       <h2>Games</h2>
-      <section class="grid">
+      <!-- The games you can play now: a poster, and a few seconds of the real game on hover. -->
+      <section class="featured">
         <article class="card live">
-          <a class="media" href="https://floor42.mergeconflict.gg" aria-label="Play Floor 42">
-            <img src="/assets/floor42.gif" alt="Floor 42: two developers shooting it out across an office at night" loading="lazy" />
+          <a class="media" href="https://floor-42.vercel.app" aria-label="Play Floor 42">
+            <video src="/assets/floor42.mp4" poster="/assets/floor42.jpg" muted loop playsinline preload="none" aria-label="Floor 42: two developers shooting it out across an office at night"></video>
           </a>
           <div class="body">
             <div class="row">
@@ -55,12 +56,34 @@
               hits and you're out.
             </p>
             <div class="actions">
-              <a class="btn primary" href="https://floor42.mergeconflict.gg/play">Play online</a>
+              <a class="btn primary" href="https://floor-42.vercel.app/play">Play online</a>
               <a class="btn" href="https://github.com/hacagahasanli/floor-42">Source</a>
             </div>
           </div>
         </article>
 
+        <article class="card live">
+          <a class="media" href="https://last-commit-standing.vercel.app" aria-label="Play Last Commit Standing">
+            <video src="/assets/last-commit-standing.mp4" poster="/assets/last-commit-standing.jpg" muted loop playsinline preload="none" aria-label="Last Commit Standing: developers parachuting into a village"></video>
+          </a>
+          <div class="body">
+            <div class="row">
+              <h3>Last Commit Standing</h3>
+              <span class="tag">up to 10 · online</span>
+            </div>
+            <p>
+              A battle royale for developers who never agree. Ten of you parachute into the same countryside with a
+              pistol each, the Deadline closes in, and only the last one standing gets to merge.
+            </p>
+            <div class="actions">
+              <a class="btn primary" href="https://last-commit-standing.vercel.app/play">Play with friends</a>
+              <a class="btn" href="https://github.com/hacagahasanli/last-commit-standing">Source</a>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="grid">
         <article class="card soon">
           <div class="media placeholder" aria-hidden="true">
             <span>&lt;&lt;&lt;&lt;</span>
@@ -97,5 +120,27 @@
       <span>Merge Conflict · made by <a href="https://github.com/hacagahasanli">hacagahasanli</a></span>
       <span class="muted">Every game is free, runs in the browser, and needs nothing but a link.</span>
     </footer>
+    <script>
+      // A few seconds of the real game: on hover with a mouse; on phones (no hover) while the card
+      // is on screen. Nothing moves for people who asked for reduced motion.
+      (() => {
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const videos = document.querySelectorAll('.card.live video');
+        const play = (v) => v.play().catch(() => {});
+        if (matchMedia('(hover: hover)').matches) {
+          videos.forEach((v) => {
+            const card = v.closest('.card');
+            card.addEventListener('mouseenter', () => play(v));
+            card.addEventListener('mouseleave', () => {
+              v.pause();
+              v.currentTime = 0;
+            });
+          });
+        } else {
+          const io = new IntersectionObserver((entries) => entries.forEach((e) => (e.isIntersecting ? play(e.target) : e.target.pause())), { threshold: 0.6 });
+          videos.forEach((v) => io.observe(v));
+        }
+      })();
+    </script>
   </body>
 </html>
