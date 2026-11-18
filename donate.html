@@ -50,14 +50,14 @@
         </label>
 
         <div class="donate-row">
-          <a id="donate" class="btn big primary" href="https://mergeconflictgames.itch.io/support/purchase" target="_blank" rel="noopener">Donate on itch.io &rarr;</a>
+          <a id="donate" class="btn big primary" href="https://mergeconflictgames.itch.io/support" target="_blank" rel="noopener">Donate on itch.io &rarr;</a>
           <div class="park" id="park" aria-hidden="true">
             <span class="bay"></span>
             <span class="car"></span>
             <span class="thanks">Thanks!</span>
           </div>
         </div>
-        <p class="hint" id="hint" aria-live="polite">Enter $5 on the next screen.</p>
+        <p class="hint" id="hint" aria-live="polite">On itch.io, press Download Now or Donate and enter $5.</p>
         <p class="fine">Payments are handled securely by itch.io; card and PayPal accepted; pay what you want, from $1.</p>
       </section>
 
@@ -87,7 +87,7 @@
 
     <script>
       (() => {
-        const URL_BUY = 'https://mergeconflictgames.itch.io/support/purchase';
+                const q = new URLSearchParams(location.search).get('amount');
         const radios = [...document.querySelectorAll('input[name=amt]')];
         const custom = document.getElementById('custom');
         const hint = document.getElementById('hint');
@@ -102,8 +102,14 @@
         const update = () => {
           const bad = custom.value !== '' && !(parseFloat(custom.value) >= 1);
           custom.setAttribute('aria-invalid', bad ? 'true' : 'false');
-          hint.textContent = bad ? 'The minimum is $1.' : 'Enter ' + fmt(amount()) + ' on the next screen.';
+          hint.textContent = bad ? 'The minimum is $1.' : 'On itch.io, press Download Now or Donate and enter ' + fmt(amount()) + '.';
         };
+        if (q) {
+          const hit = radios.find((r) => r.value === q);
+          if (hit) hit.checked = true;
+          else if (parseFloat(q) >= 1) { custom.value = parseFloat(q); radios.forEach((r) => (r.checked = false)); }
+          update();
+        }
         radios.forEach((r) => r.addEventListener('change', () => { custom.value = ''; update(); }));
         custom.addEventListener('input', () => {
           if (custom.value !== '') radios.forEach((r) => (r.checked = false));
@@ -114,9 +120,7 @@
           park.classList.remove('go');
           void park.offsetWidth;
           park.classList.add('go');
-          // itch.io has no documented way to pre-fill the amount, so we only show it as a hint.
-          const w = window.open(URL_BUY + '?popup=1', 'itch_support', 'width=480,height=640,scrollbars=yes');
-          if (w) { e.preventDefault(); w.focus(); }
+          // Plain link to the itch page (opens in a new tab); /purchase 404s until a file is live, so we never popup it.
         });
       })();
     </script>
