@@ -128,6 +128,15 @@
 
   // 4. clips
   const clips = document.querySelectorAll('video[data-clip]');
+  // Posters and metadata wait until a clip is near the screen, so nothing below the fold competes with the first paint.
+  const arm = (v) => {
+    if (v.dataset.poster) v.poster = v.dataset.poster;
+    if (!still && !saveData) v.preload = 'metadata';
+  };
+  if ('IntersectionObserver' in window) {
+    const near = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && (arm(e.target), near.unobserve(e.target))), { rootMargin: '600px 0px' });
+    clips.forEach((v) => near.observe(v));
+  } else clips.forEach(arm);
   if (clips.length && !still && !saveData && 'IntersectionObserver' in window) {
     const paused = new WeakSet();
     const io = new IntersectionObserver(
@@ -140,7 +149,6 @@
       { threshold: 0.35 },
     );
     clips.forEach((v) => {
-      v.preload = 'metadata';
       const b = document.createElement('button');
       b.type = 'button';
       b.className = 'clip-toggle';

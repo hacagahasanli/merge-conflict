@@ -814,6 +814,34 @@ body.home .site-head:not(.is-scrolled) {
 .game-title .slant {
   transform: skewX(-8deg);
 }
+.game-title.has-logo {
+  margin: 10px 0 18px;
+  line-height: 0;
+}
+.game-logo,
+.keyart .ka-inner img.game-logo,
+.js .keyart .ka-inner img.game-logo {
+  display: block;
+  position: static;
+  width: clamp(260px, 34vw, 520px);
+  height: auto;
+  object-fit: contain;
+  transform: none;
+  transition: none;
+}
+.pick .p-body img.pick-logo,
+.pick:hover .p-body img.pick-logo,
+.pick:focus-visible .p-body img.pick-logo {
+  position: static;
+  display: block;
+  z-index: auto;
+  height: clamp(34px, 3.4vw, 50px);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  transform: none;
+  margin-top: 4px;
+}
 .game-hook {
   font-family: var(--display);
   font-weight: 700;
@@ -1008,8 +1036,11 @@ body.home .site-head:not(.is-scrolled) {
   background: #0a0e1c;
 }
 .fighters img {
+  display: block;
   width: 100%;
-  aspect-ratio: 1248 / 320;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 .fighters figcaption {
   font: 500 12px/1.4 var(--mono);
