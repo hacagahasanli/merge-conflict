@@ -2223,3 +2223,254 @@ body.home .site-head:not(.is-scrolled) {
 @media (prefers-reduced-motion: reduce) {
   .help-tile, .help-tile:hover { transition: none; transform: none; }
 }
+
+/* -------------------------------------------------------------------------- support the studio: buy us a coffee */
+.coffee {
+  --porcelain: #f6f1e7;
+  --ink: #15161b;
+  --brew: #6b3a1f;
+  --crema: #c98c52;
+  position: relative;
+  padding: clamp(28px, 5vw, 72px) 0 clamp(40px, 6vw, 88px);
+  background:
+    radial-gradient(60% 80% at 85% 10%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 70%),
+    radial-gradient(50% 70% at 0% 100%, rgba(201, 140, 82, 0.16), transparent 70%),
+    var(--bg);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+.coffee::before {
+  /* a faint saucer-dot pattern, like a tablecloth */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(242, 239, 232, 0.07) 1.5px, transparent 2px);
+  background-size: 26px 26px;
+  mask-image: linear-gradient(180deg, #000, transparent 85%);
+  pointer-events: none;
+}
+.coffee-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-areas: 'copy card' 'more card';
+  column-gap: clamp(28px, 5vw, 80px);
+  row-gap: 28px;
+  align-items: start;
+}
+.coffee-copy { grid-area: copy; }
+.cup-card { grid-area: card; }
+.coffee-more { grid-area: more; }
+.coffee-eq {
+  font-size: clamp(46px, 6.2vw, 96px);
+  color: var(--fg);
+  margin: 0 0 22px;
+  display: grid;
+  gap: 0.06em;
+}
+.eq-row { display: flex; align-items: center; gap: 0.16em; white-space: nowrap; }
+.eq-b .slant { color: var(--accent); }
+.eq-c .slant { color: var(--crema); }
+.eq-op {
+  display: inline-grid;
+  place-items: center;
+  width: 0.6em;
+  height: 0.6em;
+  flex: none;
+  border-radius: 50%;
+  background: var(--fg);
+  transform: translateY(-0.04em);
+}
+.eq-op svg { width: 62%; height: 62%; stroke: var(--bg); stroke-width: 3.4; stroke-linecap: round; }
+.coffee-copy .lead { color: var(--fg-2); }
+
+/* the card: porcelain, a cup on a saucer, four amounts */
+.cup-card {
+  --fill: 0.42;
+  position: relative;
+  background: var(--porcelain);
+  color: var(--ink);
+  border-radius: 28px;
+  padding: clamp(20px, 2.6vw, 32px);
+  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.7), 0 0 0 6px color-mix(in srgb, var(--accent) 30%, transparent);
+  transform: rotate(-1.2deg);
+}
+.cup-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: -6px auto 4px;
+  width: min(240px, 70%);
+}
+.cup-svg { width: 100%; height: auto; overflow: visible; }
+.cup-svg .saucer { fill: #fff; stroke: var(--ink); stroke-width: 3; }
+.cup-svg .saucer-rim { fill: none; stroke: var(--accent); stroke-width: 3; stroke-dasharray: 2 7; stroke-linecap: round; }
+.cup-svg .saucer-shadow { fill: rgba(21, 22, 27, 0.12); }
+.cup-svg .cup { fill: #fff; stroke: var(--ink); stroke-width: 3.5; stroke-linejoin: round; }
+.cup-svg .handle { fill: none; stroke: var(--ink); stroke-width: 9; stroke-linecap: round; }
+.cup-svg .brew {
+  fill: var(--brew);
+  transform: translateY(calc((1 - var(--fill)) * 88px));
+  transition: transform 0.6s var(--ease);
+}
+.cup-svg .crema {
+  fill: var(--crema);
+  transform: translateY(calc((1 - var(--fill)) * 88px));
+  transition: transform 0.6s var(--ease);
+}
+.cup-svg .cup-band { stroke: var(--accent); stroke-width: 3; stroke-dasharray: 1 8; stroke-linecap: round; opacity: 0.8; }
+.cup-svg .cup-lip { fill: none; stroke: var(--ink); stroke-width: 3.5; }
+.cup-svg .mark polygon { fill: var(--accent); }
+.cup-svg .steam path { fill: none; stroke: rgba(21, 22, 27, 0.28); stroke-width: 4; stroke-linecap: round; }
+.hearts { position: absolute; inset: 0; pointer-events: none; }
+.hearts i {
+  position: absolute;
+  left: var(--x, 50%);
+  top: 30%;
+  font-style: normal;
+  font-size: 22px;
+  color: var(--accent);
+  animation: heart-up 1.3s var(--ease) forwards;
+}
+@keyframes heart-up {
+  from { transform: translate(-50%, 0) scale(0.4); opacity: 0; }
+  20% { opacity: 1; }
+  to { transform: translate(calc(-50% + var(--dx, 0px)), -90px) scale(1.15); opacity: 0; }
+}
+.cup-title {
+  text-align: center;
+  color: var(--ink);
+  font-size: clamp(26px, 2.4vw, 32px);
+  font-stretch: 85%;
+  margin: 0 auto 14px;
+}
+.cup-chips {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.cup-chip {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: 'emo amt' 'emo say';
+  column-gap: 12px;
+  align-items: center;
+  min-height: 64px;
+  padding: 10px 14px;
+  border-radius: 18px;
+  border: 2px solid rgba(21, 22, 27, 0.14);
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.cup-chip .cc-emo { grid-area: emo; font-size: 30px; line-height: 1; }
+.cup-chip b { grid-area: amt; font-family: var(--display); font-size: 24px; font-weight: 800; line-height: 1; }
+.cup-chip .cc-say { grid-area: say; font-size: 13.5px; line-height: 1.25; color: #4b4e57; }
+.cup-chip:hover,
+.cup-chip:focus-visible,
+.cup-chip.is-picked {
+  color: var(--ink);
+  border-color: var(--accent);
+  box-shadow: 0 8px 0 -2px color-mix(in srgb, var(--accent) 35%, transparent);
+  transform: translateY(-3px) rotate(-0.6deg);
+}
+.cup-chip:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 18px; }
+.cup-chip:hover .cc-emo,
+.cup-chip:focus-visible .cc-emo { animation: wobble 0.6s var(--ease); }
+@keyframes wobble {
+  30% { transform: rotate(-14deg) scale(1.15); }
+  60% { transform: rotate(10deg) scale(1.1); }
+}
+.cup-cta { width: 100%; justify-content: center; --b-hover: var(--ink); --b-hover-fg: var(--porcelain); }
+.cup-cta:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.cup-hint { margin: 12px 0 0; text-align: center; font-size: 14.5px; color: #4b4e57; }
+.cup-hint b { color: var(--ink); }
+
+.coffee-more .h3-like { margin-bottom: 12px; color: var(--fg); }
+.pays { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 10px; }
+.pays li { display: flex; gap: 12px; align-items: flex-start; color: var(--fg-2); }
+.pays b { color: var(--fg); }
+.pay-ico {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  font-size: 18px;
+}
+.pack {
+  display: grid;
+  grid-template-columns: minmax(0, 220px) 1fr;
+  gap: 18px;
+  align-items: center;
+  padding: 14px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.pack p { margin: 0; color: var(--fg-2); }
+.pack b { color: var(--fg); }
+.pack-imgs { position: relative; padding-right: 28px; }
+.pk-desk { border-radius: 8px; border: 3px solid #2a2e38; }
+.pk-phone {
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  width: 30%;
+  border-radius: 9px;
+  border: 3px solid #2a2e38;
+  transform: rotate(6deg);
+}
+.help-head { margin-bottom: 28px; }
+.help-head h2 { font-size: clamp(36px, 5vw, 64px); font-stretch: 80%; text-transform: uppercase; line-height: 0.95; color: var(--fg); margin-bottom: 12px; }
+.t-coffee { --t-acc: var(--crema, #c98c52); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .cup-svg .steam path { stroke-dasharray: 40; animation: steam 2.8s ease-in-out infinite; }
+  .cup-svg .steam .s2 { animation-delay: 0.5s; }
+  .cup-svg .steam .s3 { animation-delay: 1s; }
+  .cup-card { animation: cup-in 0.8s var(--ease) both; }
+}
+@keyframes steam {
+  0% { stroke-dashoffset: 40; opacity: 0; transform: translateY(6px); }
+  40% { opacity: 1; }
+  100% { stroke-dashoffset: -40; opacity: 0; transform: translateY(-10px); }
+}
+@keyframes cup-in {
+  from { opacity: 0; transform: translateY(18px) rotate(2deg); }
+  to { opacity: 1; transform: rotate(-1.2deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cup-svg .brew, .cup-svg .crema, .cup-chip { transition: none; }
+  .cup-chip:hover, .cup-chip:focus-visible, .cup-chip.is-picked { transform: none; }
+  .cup-chip:hover .cc-emo, .cup-chip:focus-visible .cc-emo { animation: none; }
+  .hearts { display: none; }
+}
+@media (max-width: 900px) {
+  .coffee-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'copy' 'card' 'more'; }
+  .cup-card { transform: none; max-width: 520px; width: 100%; }
+}
+@media (max-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .cup-card { animation-name: cup-in-flat; }
+}
+@keyframes cup-in-flat {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+@media (max-width: 520px) {
+  .coffee-eq { font-size: clamp(38px, 11.4vw, 60px); margin-bottom: 16px; }
+  .coffee-copy .lead { font-size: 17px; }
+  .cup-stage { width: 170px; margin-top: -10px; }
+  .cup-chip { padding: 9px 10px; column-gap: 8px; min-height: 60px; }
+  .cup-chip .cc-emo { font-size: 24px; }
+  .cup-chip b { font-size: 21px; }
+  .cup-chip .cc-say { font-size: 12.5px; }
+  .pack { grid-template-columns: 1fr; }
+}

@@ -173,15 +173,13 @@
     });
   }
 
-  // 4b. one clip, two cameras: third and first person take turns every few seconds until the visitor picks one.
+  // 4b. one clip, two cameras: third person leads; the visitor can switch to first person.
   document.querySelectorAll('[data-views]').forEach((fig) => {
     const vids = [...fig.querySelectorAll('video[data-view]')];
     const btns = [...fig.querySelectorAll('[data-to]')];
     const live = !still && !saveData;
     let cur = vids[0].dataset.view;
     let visible = false;
-    let picked = false;
-    let timer = 0;
     const show = (to) => {
       cur = to;
       vids.forEach((v) => {
@@ -191,10 +189,6 @@
         else v.pause();
       });
       btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.to === to)));
-    };
-    const cycle = () => {
-      clearInterval(timer);
-      if (visible && live && !picked && !paused) timer = setInterval(() => show(cur === 'tpp' ? 'fpp' : 'tpp'), 6000);
     };
     let paused = false;
     if (live) {
@@ -208,8 +202,6 @@
       label();
       pb.addEventListener('click', () => {
         paused = !paused;
-        if (paused) clearInterval(timer);
-        else cycle();
         show(cur);
         label();
       });
@@ -217,8 +209,6 @@
     }
     btns.forEach((b) =>
       b.addEventListener('click', () => {
-        picked = true;
-        clearInterval(timer);
         show(b.dataset.to);
       }),
     );
@@ -237,10 +227,54 @@
       ([e]) => {
         visible = e.isIntersecting;
         show(cur);
-        cycle();
       },
       { threshold: 0.35 },
     ).observe(fig);
+  });
+
+  // 4c. buy us a coffee: each amount fills the cup a little more; ?amount=5 (from a game or the old /donate link) pre-picks one.
+  document.querySelectorAll('[data-cup]').forEach((card) => {
+    const chips = [...card.querySelectorAll('.cup-chip')];
+    const hint = card.querySelector('[data-cup-hint]');
+    const hearts = card.querySelector('.hearts');
+    const cta = card.querySelector('.cup-cta');
+    const base = hint.textContent;
+    const level = { 3: 0.5, 5: 0.66, 10: 0.82, 25: 0.97 };
+    let picked = null;
+    const say = (amt) => {
+      if (!amt) { hint.textContent = base; return; }
+      hint.innerHTML = 'On itch.io, press <b>Download Now</b> or <b>Donate</b> and enter <b>$' + amt + '</b>. Thank you!';
+    };
+    const fill = (amt) => card.style.setProperty('--fill', amt ? level[amt] || 0.97 : 0.42);
+    const pick = (amt) => {
+      picked = amt;
+      chips.forEach((c) => c.classList.toggle('is-picked', c.dataset.amount === amt));
+      fill(amt);
+      say(amt);
+    };
+    const burst = () => {
+      if (still || !hearts) return;
+      for (let i = 0; i < 6; i++) {
+        const h = document.createElement('i');
+        h.textContent = '\u2665';
+        h.style.setProperty('--x', 30 + Math.random() * 40 + '%');
+        h.style.setProperty('--dx', (Math.random() - 0.5) * 80 + 'px');
+        h.style.animationDelay = i * 0.08 + 's';
+        hearts.appendChild(h);
+        setTimeout(() => h.remove(), 1600 + i * 80);
+      }
+    };
+    chips.forEach((c) => {
+      const amt = c.dataset.amount;
+      c.addEventListener('pointerenter', () => fill(amt));
+      c.addEventListener('pointerleave', () => fill(picked));
+      c.addEventListener('focus', () => fill(amt));
+      c.addEventListener('blur', () => fill(picked));
+      c.addEventListener('click', () => { pick(amt); burst(); });
+    });
+    cta.addEventListener('click', burst);
+    const q = new URLSearchParams(location.search).get('amount');
+    if (q && level[q]) pick(q);
   });
 
   // 5. prices
