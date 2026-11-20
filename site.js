@@ -1,7 +1,7 @@
 // Nalbaki Games site script. Plain JS, loaded with `defer`. No dependencies.
 // 1. Header: border once scrolled, hides on scroll down, returns on scroll up; phone menu.
 // 2. Scroll reveals ([data-reveal]) and pointer tilt (.tilt), both off under reduced motion.
-// 3. "Now serving" fan on the home page: tabs or a click bring a game to the front.
+// 3. Home hero gameplay loop (lazy, pausable) and key-art zoom on scroll.
 // 4. Gameplay clips play only while on screen, never under reduced motion or Save-Data; each gets a pause button.
 // 5. The services page fills its prices from pricing.js.
 (() => {
@@ -84,21 +84,47 @@
     });
   }
 
-  // 3. "Now serving" fan
-  const serve = document.querySelector('[data-serve]');
-  if (serve) {
-    const cards = [...serve.querySelectorAll('.serve-card')];
-    const tabs = [...serve.querySelectorAll('.serve-tabs button')];
-    const line = serve.querySelector('.serve-line');
-    const show = (i) => {
-      cards.forEach((c, j) => (c.dataset.pos = String((j - i + cards.length) % cards.length)));
-      tabs.forEach((t, j) => t.setAttribute('aria-pressed', String(j === i)));
-      const tpl = serve.querySelector(`template[data-for="${cards[i].dataset.game}"]`);
-      if (line && tpl) line.replaceChildren(tpl.content.cloneNode(true));
+  // 3. home hero: the gameplay loop starts after the page has loaded (the key art is the first paint),
+  //    pauses off screen, and has its own pause button.
+  const hero = document.querySelector('video[data-hero]');
+  const addToggle = (v, host) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'clip-toggle';
+    let off = false;
+    const label = () => {
+      b.textContent = off ? 'Play' : 'Pause';
+      b.setAttribute('aria-label', off ? 'Play video' : 'Pause video');
     };
-    tabs.forEach((t, i) => t.addEventListener('click', () => show(i)));
-    cards.forEach((c, i) => c.addEventListener('click', () => show(i)));
+    label();
+    b.addEventListener('click', () => {
+      off = !off;
+      if (off) v.pause();
+      else v.play().catch(() => {});
+      label();
+    });
+    host.appendChild(b);
+    return () => off;
+  };
+  if (hero && !still && !saveData) {
+    const start = () => {
+      hero.querySelectorAll('source[data-src]').forEach((s) => (s.src = s.dataset.src));
+      hero.load();
+      hero.addEventListener('playing', () => hero.classList.add('is-playing'), { once: true });
+      const isOff = addToggle(hero, hero.closest('.hero'));
+      if ('IntersectionObserver' in window)
+        new IntersectionObserver(([e]) => (e.isIntersecting && !isOff() ? hero.play().catch(() => {}) : hero.pause())).observe(hero);
+      else hero.play().catch(() => {});
+    };
+    const later = () => ('requestIdleCallback' in window ? requestIdleCallback(start, { timeout: 2500 }) : setTimeout(start, 1200));
+    if (document.readyState === 'complete') later();
+    else addEventListener('load', later, { once: true });
   }
+  const kas = document.querySelectorAll('[data-reveal-ka]');
+  if (kas.length && 'IntersectionObserver' in window && !still) {
+    const ko = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && (e.target.classList.add('in'), ko.unobserve(e.target))), { threshold: 0.15 });
+    kas.forEach((k) => ko.observe(k));
+  } else kas.forEach((k) => k.classList.add('in'));
 
   // 4. clips
   const clips = document.querySelectorAll('video[data-clip]');
