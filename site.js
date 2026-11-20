@@ -1,11 +1,108 @@
-// Nalbaki Games site script. Plain JS, loaded with `defer`. Two jobs:
-// 1. Gameplay clips play only while on screen (saves data and battery), never under reduced motion or Save-Data,
-//    and every clip gets a pause button.
-// 2. The services page fills its prices from pricing.js.
+// Nalbaki Games site script. Plain JS, loaded with `defer`. No dependencies.
+// 1. Header: border once scrolled, hides on scroll down, returns on scroll up; phone menu.
+// 2. Scroll reveals ([data-reveal]) and pointer tilt (.tilt), both off under reduced motion.
+// 3. "Now serving" fan on the home page: tabs or a click bring a game to the front.
+// 4. Gameplay clips play only while on screen, never under reduced motion or Save-Data; each gets a pause button.
+// 5. The services page fills its prices from pricing.js.
 (() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = navigator.connection?.saveData === true;
+
+  // 1. header
+  const head = document.querySelector('.site-head');
+  const menuBtn = document.querySelector('.menu-btn');
+  const panel = document.getElementById('menu');
+  let lastY = scrollY;
+  let menuOpen = false;
+  if (head) {
+    addEventListener(
+      'scroll',
+      () => {
+        const y = scrollY;
+        head.classList.toggle('is-scrolled', y > 8);
+        if (!still && !menuOpen) head.classList.toggle('is-hidden', y > 320 && y > lastY + 4);
+        if (y < lastY - 4 || y < 320) head.classList.remove('is-hidden');
+        lastY = y;
+      },
+      { passive: true },
+    );
+    head.addEventListener('focusin', () => head.classList.remove('is-hidden'));
+  }
+  if (menuBtn && panel) {
+    const setMenu = (open) => {
+      menuOpen = open;
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.querySelector('.label').textContent = open ? 'Close' : 'Menu';
+      panel.classList.toggle('is-open', open);
+      panel.inert = !open;
+      document.body.classList.toggle('menu-open', open);
+    };
+    panel.inert = true;
+    menuBtn.addEventListener('click', () => setMenu(!menuOpen));
+    addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menuOpen) {
+        setMenu(false);
+        menuBtn.focus();
+      }
+    });
+    matchMedia('(min-width: 901px)').addEventListener('change', (e) => e.matches && setMenu(false));
+  }
+
+  // 2. reveals and tilt
+  const reveals = document.querySelectorAll('[data-reveal]');
+  if (reveals.length && !still && 'IntersectionObserver' in window) {
+    const ro = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            ro.unobserve(e.target);
+          }
+        }),
+      { rootMargin: '0px 0px -8% 0px' },
+    );
+    reveals.forEach((el) => ro.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('in'));
+  }
+  if (!still && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.tilt').forEach((el) => {
+      const max = Number(el.dataset.tilt || 5);
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        el.classList.add('is-tilting');
+        el.style.setProperty('--ry', `${(x * max * 2).toFixed(2)}deg`);
+        el.style.setProperty('--rx', `${(-y * max * 2).toFixed(2)}deg`);
+      });
+      el.addEventListener('pointerleave', () => {
+        el.classList.remove('is-tilting');
+        el.style.setProperty('--ry', '0deg');
+        el.style.setProperty('--rx', '0deg');
+      });
+    });
+  }
+
+  // 3. "Now serving" fan
+  const serve = document.querySelector('[data-serve]');
+  if (serve) {
+    const cards = [...serve.querySelectorAll('.serve-card')];
+    const tabs = [...serve.querySelectorAll('.serve-tabs button')];
+    const line = serve.querySelector('.serve-line');
+    const show = (i) => {
+      cards.forEach((c, j) => (c.dataset.pos = String((j - i + cards.length) % cards.length)));
+      tabs.forEach((t, j) => t.setAttribute('aria-pressed', String(j === i)));
+      const tpl = serve.querySelector(`template[data-for="${cards[i].dataset.game}"]`);
+      if (line && tpl) line.replaceChildren(tpl.content.cloneNode(true));
+    };
+    tabs.forEach((t, i) => t.addEventListener('click', () => show(i)));
+    cards.forEach((c, i) => c.addEventListener('click', () => show(i)));
+  }
+
+  // 4. clips
   const clips = document.querySelectorAll('video[data-clip]');
-  const still = matchMedia('(prefers-reduced-motion: reduce)').matches || navigator.connection?.saveData === true;
-  if (clips.length && !still && 'IntersectionObserver' in window) {
+  if (clips.length && !still && !saveData && 'IntersectionObserver' in window) {
     const paused = new WeakSet();
     const io = new IntersectionObserver(
       (entries) =>
@@ -21,19 +118,20 @@
       const b = document.createElement('button');
       b.type = 'button';
       b.className = 'clip-toggle';
-      b.setAttribute('aria-label', 'Pause clip');
-      b.textContent = 'Pause';
+      const label = (playing) => {
+        b.textContent = playing ? 'Pause' : 'Play';
+        b.setAttribute('aria-label', playing ? 'Pause clip' : 'Play clip');
+      };
+      label(true);
       b.addEventListener('click', () => {
         if (paused.has(v)) {
           paused.delete(v);
           v.play().catch(() => {});
-          b.textContent = 'Pause';
-          b.setAttribute('aria-label', 'Pause clip');
+          label(true);
         } else {
           paused.add(v);
           v.pause();
-          b.textContent = 'Play';
-          b.setAttribute('aria-label', 'Play clip');
+          label(false);
         }
       });
       v.parentElement.appendChild(b);
@@ -41,8 +139,10 @@
     });
   }
 
+  // 5. prices
   const pricing = window.NALBAKI_PRICING;
   if (pricing) {
+    const fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: pricing.currency, maximumFractionDigits: 0 });
     document.querySelectorAll('[data-package]').forEach((el) => {
       const p = pricing.packages[el.dataset.package];
       if (!p) return;
@@ -50,9 +150,7 @@
       const days = el.querySelector('[data-days]');
       if (price) {
         if (typeof p.price === 'number') {
-          const amount = new Intl.NumberFormat('en-US', { style: 'currency', currency: pricing.currency, maximumFractionDigits: 0 }).format(p.price);
-          price.innerHTML = '';
-          price.append(amount);
+          price.replaceChildren(fmt.format(p.price));
           const small = document.createElement('small');
           small.textContent = p.unit;
           price.append(' ', small);
