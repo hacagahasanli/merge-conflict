@@ -184,22 +184,23 @@
         </div>
         <div class="wrap details flip">
           <div class="stack" data-reveal>
-            <figure class="media">
-              <video data-clip muted loop playsinline preload="none" data-poster="/assets/img/last-commit-standing-poster-1280.webp" width="1920" height="1080" aria-label="Last Commit Standing gameplay: the plane crosses the island, a fighter jumps, free-falls over the village and opens a parachute, then trades shots with other jumpers landing around a farmyard">
+            <figure class="media views" data-views>
+              <video data-view="tpp" class="on" muted loop playsinline preload="none" data-poster="/assets/img/last-commit-standing-poster-1280.webp" width="1920" height="1080" aria-label="Last Commit Standing in third person: the plane crosses the island, a fighter jumps, opens a parachute and lands in a firefight by a farmyard">
                 <source src="/assets/video/last-commit-standing-720.webm" type="video/webm; codecs=&quot;vp9&quot;" media="(max-width: 760px)" />
                 <source src="/assets/video/last-commit-standing-720.mp4" type="video/mp4" media="(max-width: 760px)" />
                 <source src="/assets/video/last-commit-standing-1080.webm" type="video/webm; codecs=&quot;vp9&quot;" />
                 <source src="/assets/video/last-commit-standing-1080.mp4" type="video/mp4" />
               </video>
-              <span class="live">Real gameplay</span>
-            </figure>
-            <figure class="media">
-              <video data-clip muted loop playsinline preload="none" data-poster="/assets/img/lcs-fpp-poster-1280.webp" width="1920" height="1080" aria-label="Last Commit Standing in first person: rifle up on a village track, enemies firing back from the tall grass between the houses">
+              <video data-view="fpp" muted loop playsinline preload="none" data-poster="/assets/img/lcs-fpp-poster-1280.webp" width="1920" height="1080" aria-label="Last Commit Standing in first person: rifle up on a village track, enemies firing back from the tall grass between the houses">
                 <source src="/assets/video/lcs-fpp-720.mp4" type="video/mp4" media="(max-width: 760px)" />
                 <source src="/assets/video/lcs-fpp-1080.webm" type="video/webm; codecs=&quot;vp9&quot;" />
                 <source src="/assets/video/lcs-fpp-1080.mp4" type="video/mp4" />
               </video>
-              <span class="live">First person</span>
+              <div class="view-switch" role="group" aria-label="Camera view">
+                <button type="button" data-to="tpp" aria-pressed="true">Third person</button>
+                <button type="button" data-to="fpp" aria-pressed="false">First person</button>
+              </div>
+              <span class="live">Real gameplay &middot; both views</span>
             </figure>
           </div>
           <div class="dcopy" data-reveal style="--d: 0.1s">
@@ -238,7 +239,7 @@
         </div>
         <div class="wrap details">
           <figure class="media" data-reveal>
-            <video data-clip muted loop playsinline preload="none" data-poster="/assets/img/floor-42-poster-1280.webp" width="1920" height="1080" aria-label="Floor 42 gameplay: two fighters trade fire across a night-time office, then a rocket blows one off a desk for the knockout">
+            <video data-clip muted loop playsinline preload="none" data-poster="/assets/img/floor-42-poster-1280.webp" width="1920" height="1080" aria-label="Floor 42 gameplay: Hotfix and Intern trade fire across the night-time office, jump between the walkways, and a hit knocks Intern flat in slow motion">
                 <source src="/assets/video/floor-42-720.webm" type="video/webm; codecs=&quot;vp9&quot;" media="(max-width: 760px)" />
                 <source src="/assets/video/floor-42-720.mp4" type="video/mp4" media="(max-width: 760px)" />
                 <source src="/assets/video/floor-42-1080.webm" type="video/webm; codecs=&quot;vp9&quot;" />
@@ -256,10 +257,10 @@
             </dl>
             <figure class="fighters">
               <picture>
-                <source type="image/avif" srcset="/assets/img/ka-f42-lineup-960.avif 960w, /assets/img/ka-f42-lineup-1600.avif 1600w, /assets/img/ka-f42-lineup-2560.avif 2560w" sizes="(min-width: 960px) 560px, 92vw" />
-                <img src="/assets/img/ka-f42-lineup-960.webp" srcset="/assets/img/ka-f42-lineup-960.webp 960w, /assets/img/ka-f42-lineup-1600.webp 1600w, /assets/img/ka-f42-lineup-2560.webp 2560w" sizes="(min-width: 960px) 560px, 92vw" width="2560" height="1440" alt="The four Floor 42 fighters squared up two against two in the night-time office: Hotfix with a rocket launcher and Legacy with a shotgun face Standup with a railgun and Intern with an SMG" loading="lazy" decoding="async" />
+                <source type="image/avif" srcset="/assets/img/ka-f42-ko-960.avif 960w, /assets/img/ka-f42-ko-1600.avif 1600w, /assets/img/ka-f42-ko-2560.avif 2560w" sizes="(min-width: 960px) 560px, 92vw" />
+                <img src="/assets/img/ka-f42-ko-960.webp" srcset="/assets/img/ka-f42-ko-960.webp 960w, /assets/img/ka-f42-ko-1600.webp 1600w, /assets/img/ka-f42-ko-2560.webp 2560w" sizes="(min-width: 960px) 560px, 92vw" width="2560" height="1440" alt="Floor 42 knockout: Intern is blown backwards off the server rack in a burst of sparks, the night city glowing through the office windows" loading="lazy" decoding="async" />
               </picture>
-              <figcaption>Four fighters: Hotfix, Legacy, Standup, Intern</figcaption>
+              <figcaption>Knockout. Four fighters to pick: Hotfix, Legacy, Standup, Intern</figcaption>
             </figure>
             <ol class="steps3">
               <li><b>Pick</b><span>Same guns for everyone. Speed, size, jumps and shove weight differ.</span></li>

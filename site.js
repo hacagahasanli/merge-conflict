@@ -173,6 +173,76 @@
     });
   }
 
+  // 4b. one clip, two cameras: third and first person take turns every few seconds until the visitor picks one.
+  document.querySelectorAll('[data-views]').forEach((fig) => {
+    const vids = [...fig.querySelectorAll('video[data-view]')];
+    const btns = [...fig.querySelectorAll('[data-to]')];
+    const live = !still && !saveData;
+    let cur = vids[0].dataset.view;
+    let visible = false;
+    let picked = false;
+    let timer = 0;
+    const show = (to) => {
+      cur = to;
+      vids.forEach((v) => {
+        const on = v.dataset.view === to;
+        v.classList.toggle('on', on);
+        if (on && visible && live && !paused) v.play().catch(() => {});
+        else v.pause();
+      });
+      btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.to === to)));
+    };
+    const cycle = () => {
+      clearInterval(timer);
+      if (visible && live && !picked && !paused) timer = setInterval(() => show(cur === 'tpp' ? 'fpp' : 'tpp'), 6000);
+    };
+    let paused = false;
+    if (live) {
+      const pb = document.createElement('button');
+      pb.type = 'button';
+      pb.className = 'clip-toggle';
+      const label = () => {
+        pb.textContent = paused ? 'Play' : 'Pause';
+        pb.setAttribute('aria-label', paused ? 'Play clip' : 'Pause clip');
+      };
+      label();
+      pb.addEventListener('click', () => {
+        paused = !paused;
+        if (paused) clearInterval(timer);
+        else cycle();
+        show(cur);
+        label();
+      });
+      fig.appendChild(pb);
+    }
+    btns.forEach((b) =>
+      b.addEventListener('click', () => {
+        picked = true;
+        clearInterval(timer);
+        show(b.dataset.to);
+      }),
+    );
+    if (!('IntersectionObserver' in window)) {
+      vids.forEach((v) => v.dataset.poster && (v.poster = v.dataset.poster));
+      return;
+    }
+    new IntersectionObserver(
+      (es) =>
+        es.forEach((e) => {
+          if (e.isIntersecting) vids.forEach((v) => { if (v.dataset.poster && !v.poster) v.poster = v.dataset.poster; if (live) v.preload = 'metadata'; });
+        }),
+      { rootMargin: '600px 0px' },
+    ).observe(fig);
+    new IntersectionObserver(
+      ([e]) => {
+        visible = e.isIntersecting;
+        show(cur);
+        cycle();
+      },
+      { threshold: 0.35 },
+    ).observe(fig);
+  });
+
   // 5. prices
   const pricing = window.NALBAKI_PRICING;
   if (pricing) {
