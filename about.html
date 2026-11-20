@@ -4,77 +4,98 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>About · Nalbaki Games</title>
-    <meta name="description" content="Nalbaki Games is a solo studio: one developer with modern tools, making fast browser games and building them to order. No fake team, no borrowed logos." />
+    <meta name="description" content="Nalbaki Games is an independent one-developer studio making original browser games, and building games to order. The name is Azerbaijani for the saucer under a glass of tea." />
     <link rel="canonical" href="https://nalbakigames.com/about" />
-    <meta name="theme-color" content="#0f0e22" />
+    <meta name="theme-color" content="#f4efe6" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Nalbaki Games" />
     <meta property="og:title" content="About · Nalbaki Games" />
-    <meta property="og:description" content="Nalbaki Games is a solo studio: one developer with modern tools, making fast browser games and building them to order. No fake team, no borrowed logos." />
+    <meta property="og:description" content="Nalbaki Games is an independent one-developer studio making original browser games, and building games to order. The name is Azerbaijani for the saucer under a glass of tea." />
     <meta property="og:url" content="https://nalbakigames.com/about" />
     <meta property="og:image" content="https://nalbakigames.com/assets/og.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Nalbaki Games logo beside screenshots of Parking Lot, Floor 42 and Last Commit Standing" />
+    <meta property="og:image:alt" content="Nalbaki Games: a red tea glass on its saucer beside frames from Parking Lot, Last Commit Standing and Floor 42" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/bricolage-var.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/styles.css" />
+    <script>document.documentElement.classList.add('js')</script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
     <header class="site-head">
-      <div class="wrap">
-        <div class="head-row">
-          <a class="brand" href="/" aria-label="Nalbaki Games, home"><img src="/assets/logo.svg" width="38" height="38" alt="" /><span>Nalbaki <span>Games</span></span></a>
-          <a class="btn primary small head-cta" href="/contact">Start a project</a>
-        </div>
+      <div class="wrap head-row">
+        <a class="brand" href="/" aria-label="Nalbaki Games, home"><img src="/assets/brand/nalbaki-logo-on-light.svg" width="142" height="42" alt="" /></a>
         <nav class="nav" aria-label="Main">
           <a href="/games">Games</a>
+          <a href="/about" aria-current="page">Studio</a>
           <a href="/services">Services</a>
           <a href="/work">Work</a>
-          <a href="/about" aria-current="page">About</a>
-          <a href="/press">Press kit</a>
+          <a href="/press">Press</a>
           <a href="/contact">Contact</a>
         </nav>
+        <a class="btn small head-cta" href="/games">Play free <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="label">Menu</span><span class="bars" aria-hidden="true"></span></button>
+      </div>
+      <div class="menu-panel" id="menu">
+        <nav aria-label="Main, phone">
+          <a href="/">Home</a>
+          <a href="/games">Games</a>
+          <a href="/about" aria-current="page">Studio</a>
+          <a href="/services">Services</a>
+          <a href="/work">Work</a>
+          <a href="/press">Press</a>
+          <a href="/contact">Contact</a>
+        </nav>
+        <div class="menu-foot">
+          <a href="mailto:hello@nalbakigames.com">hello@nalbakigames.com</a>
+          <a href="/contact">Start a project</a>
+        </div>
       </div>
     </header>
 
     <main id="main">
       <section class="page-head">
         <div class="wrap">
-          <p class="eyebrow">About</p>
-          <h1>One developer, good tools, no pretending.</h1>
+          <p class="kicker"><span class="pip"></span>About the studio</p>
+          <h1>One developer, good tools, no pretending<span class="saucer-dot" aria-hidden="true"></span></h1>
+          <p class="lead">Nalbaki Games is an independent studio. One developer designs, builds, tests and ships every game and every client project, working with modern tools, including AI-assisted coding, to move fast without cutting corners.</p>
         </div>
       </section>
 
       <section class="wrap" aria-label="About the studio">
         <div class="prose">
-          <p class="lead">Nalbaki Games is a solo studio. One developer designs, builds, tests and ships every game and every client project, working with modern tools, including AI-assisted coding, to move fast without cutting corners.</p>
+          <div class="name-card">
+            <img src="/assets/brand/nalbaki-mark.svg" width="120" height="120" alt="" />
+            <div>
+              <b>n&#601;lb&#601;ki <span class="say" style="color: var(--on-night-2)">nal-BAH-kee</span></b>
+              <p>The Azerbaijani word for a saucer: the small plate under a glass of tea. The mark is that glass on its saucer, a nod to long evenings of &ldquo;just one more&rdquo;, which is how a good game should feel.</p>
+            </div>
+          </div>
 
           <h2>What the studio makes</h2>
-          <p>Fast, polished games that run in the browser: no install, no account, playable on a laptop or a phone a few seconds after you open the link. The first three, <a href="/games">Parking Lot, Last Commit Standing and Floor 42</a>, were built in November 2026 and are being prepared for web game portals such as CrazyGames.</p>
+          <p>Original games that run in the browser: no install, no account, playable on a laptop or a phone a few seconds after you open the link. The first three, <a href="/games">Parking Lot, Last Commit Standing and Floor 42</a>, were built in November 2026, each in a different genre, and are being prepared for web game portals such as CrazyGames.</p>
           <p>The same skills are for hire: custom browser games, three.js and WebGL work, playable ads and portal-ready builds, each sold as a <a href="/services">fixed-price package</a>.</p>
 
           <h2>How the work is done</h2>
           <ul>
             <li><b>Rules first, then pictures.</b> Game logic lives in a plain simulation with its own automated tests, so it can be checked without opening a browser. Parking Lot has 364 tests.</li>
-            <li><b>Phones are not an afterthought.</b> Touch controls, layouts and quality tiers are part of every build.</li>
+            <li><b>Phones are not an afterthought.</b> Touch controls and phone layouts are part of every game.</li>
             <li><b>Measure, then claim.</b> Build size, load time and frame rate are measured and written down. The <a href="/work">case studies</a> list where every number comes from.</li>
             <li><b>You own what you pay for.</b> Client projects end with the full source code and notes, not a locked build.</li>
           </ul>
 
           <h2>What you will not find here</h2>
-          <p>No stock-photo team, no borrowed client logos and no testimonials. The studio is new, so the portfolio is its own games. When there are client projects to show, they will appear with the client's permission.</p>
-
-          <h2>The name</h2>
-          <p><i>Nəlbəki</i> (said <i>nal-BAH-kee</i>) is the Azerbaijani word for a saucer, the small plate that tea is served on. The logo is a saucer that turned out to fly.</p>
+          <p>No stock-photo team, no borrowed client logos and no testimonials. The studio is new, so the portfolio is its own games. When there are client projects to show, they will appear with the client&rsquo;s permission.</p>
 
           <div class="actions">
-            <a class="btn primary" href="/contact">Get in touch <span class="arrow" aria-hidden="true">&rarr;</span></a>
-            <a class="btn" href="/press">Press kit</a>
+            <a class="btn" href="/games">Play the games <span class="arrow" aria-hidden="true">&rarr;</span></a>
+            <a class="btn ghost" href="/contact">Get in touch</a>
+            <a class="btn ghost" href="/press">Press kit</a>
           </div>
         </div>
       </section>
@@ -82,31 +103,40 @@
 
     <footer class="site-foot">
       <div class="wrap">
-        <div class="foot-grid">
-          <div>
-            <a class="brand" href="/"><img src="/assets/logo.svg" width="38" height="38" alt="" /><span>Nalbaki <span>Games</span></span></a>
-            <p>A solo studio making fast, polished browser games, and building them to order.</p>
+        <div class="foot-top">
+          <div class="foot-pitch">
+            <p>Original games, served in the browser. Free to play.</p>
+            <a class="btn" href="/games">Pick a game <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
-          <nav aria-label="Footer">
+          <nav aria-label="Games">
+            <h2>Play</h2>
+            <ul>
+              <li><a href="https://parking-lot-ivory.vercel.app/">Parking Lot</a></li>
+              <li><a href="https://last-commit-standing.vercel.app/play">Last Commit Standing</a></li>
+              <li><a href="https://floor-42.vercel.app/characters">Floor 42</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Studio">
             <h2>Studio</h2>
             <ul>
-              <li><a href="/games">Games</a></li>
+              <li><a href="/about">About</a></li>
               <li><a href="/services">Services</a></li>
               <li><a href="/work">Work</a></li>
-              <li><a href="/about">About</a></li>
               <li><a href="/press">Press kit</a></li>
             </ul>
           </nav>
           <div>
-            <h2>Contact</h2>
+            <h2>Say hello</h2>
             <ul>
               <li><a href="mailto:hello@nalbakigames.com">hello@nalbakigames.com</a></li>
               <li><a href="/contact">Start a project</a></li>
             </ul>
           </div>
         </div>
-        <div class="legal"><span>&copy; 2026 Nalbaki Games</span><span>Made for the browser.</span></div>
+        <div class="foot-word"><img src="/assets/brand/nalbaki-wordmark-on-dark.svg" width="1200" height="489" alt="" loading="lazy" decoding="async" /></div>
+        <div class="legal"><span>&copy; 2026 Nalbaki Games</span><span>One more round.</span></div>
       </div>
     </footer>
+    <script src="/site.js" defer></script>
   </body>
 </html>

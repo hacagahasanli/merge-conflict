@@ -6,7 +6,7 @@
     <title>Services · Nalbaki Games</title>
     <meta name="description" content="Fixed-price custom browser games, three.js and WebGL work, MRAID-ready playable ads and CrazyGames or Poki portal-ready builds, with a clear scope and full source code." />
     <link rel="canonical" href="https://nalbakigames.com/services" />
-    <meta name="theme-color" content="#0f0e22" />
+    <meta name="theme-color" content="#f4efe6" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Nalbaki Games" />
     <meta property="og:title" content="Services · Nalbaki Games" />
@@ -15,42 +15,59 @@
     <meta property="og:image" content="https://nalbakigames.com/assets/og.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Nalbaki Games logo beside screenshots of Parking Lot, Floor 42 and Last Commit Standing" />
+    <meta property="og:image:alt" content="Nalbaki Games: a red tea glass on its saucer beside frames from Parking Lot, Last Commit Standing and Floor 42" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/bricolage-var.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/styles.css" />
+    <script>document.documentElement.classList.add('js')</script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
     <header class="site-head">
-      <div class="wrap">
-        <div class="head-row">
-          <a class="brand" href="/" aria-label="Nalbaki Games, home"><img src="/assets/logo.svg" width="38" height="38" alt="" /><span>Nalbaki <span>Games</span></span></a>
-          <a class="btn primary small head-cta" href="/contact">Start a project</a>
-        </div>
+      <div class="wrap head-row">
+        <a class="brand" href="/" aria-label="Nalbaki Games, home"><img src="/assets/brand/nalbaki-logo-on-light.svg" width="142" height="42" alt="" /></a>
         <nav class="nav" aria-label="Main">
           <a href="/games">Games</a>
+          <a href="/about">Studio</a>
           <a href="/services" aria-current="page">Services</a>
           <a href="/work">Work</a>
-          <a href="/about">About</a>
-          <a href="/press">Press kit</a>
+          <a href="/press">Press</a>
           <a href="/contact">Contact</a>
         </nav>
+        <a class="btn small head-cta" href="/games">Play free <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="label">Menu</span><span class="bars" aria-hidden="true"></span></button>
+      </div>
+      <div class="menu-panel" id="menu">
+        <nav aria-label="Main, phone">
+          <a href="/">Home</a>
+          <a href="/games">Games</a>
+          <a href="/about">Studio</a>
+          <a href="/services" aria-current="page">Services</a>
+          <a href="/work">Work</a>
+          <a href="/press">Press</a>
+          <a href="/contact">Contact</a>
+        </nav>
+        <div class="menu-foot">
+          <a href="mailto:hello@nalbakigames.com">hello@nalbakigames.com</a>
+          <a href="/contact">Start a project</a>
+        </div>
       </div>
     </header>
 
     <main id="main">
+
       <section class="page-head">
         <div class="wrap">
-          <p class="eyebrow">Services</p>
+          <p class="kicker"><span class="pip"></span>Services</p>
           <h1>Browser games and 3D, built fast and built right.</h1>
           <p class="lead">Four fixed-price packages with a clear scope. You see a playable build early, you get the full source at the end, and the price does not move unless the scope does.</p>
           <div class="actions">
-            <a class="btn primary" href="#packages">See packages</a>
-            <a class="btn" href="/contact">Send a brief</a>
+            <a class="btn" href="#packages">See packages</a>
+            <a class="btn ghost" href="/contact">Send a brief</a>
           </div>
         </div>
       </section>
@@ -83,10 +100,10 @@
         </div>
       </section>
 
-      <section class="section alt" id="packages" aria-labelledby="pk-h">
+      <section class="section paper" id="packages" aria-labelledby="pk-h">
         <div class="wrap">
           <div class="sec-head">
-            <p class="eyebrow">Fixed-price packages</p>
+            <p class="kicker"><span class="pip"></span>Fixed-price packages</p>
             <h2 id="pk-h">Pick a package. Know the price and the scope up front.</h2>
             <p>Need something between two packages? Send a brief and you get a fixed quote for exactly that.</p>
           </div>
@@ -112,7 +129,7 @@
                 <li>Online multiplayer servers (quoted separately)</li>
                 <li>Prize draws, logins or payments</li>
               </ul>
-              <a class="btn primary" href="mailto:hello@nalbakigames.com?subject=Custom%20browser%20game">Ask about this package</a>
+              <a class="btn" href="mailto:hello@nalbakigames.com?subject=Custom%20browser%20game">Ask about this package</a>
             </article>
 
             <article class="card pkg" data-package="portal">
@@ -134,7 +151,7 @@
                 <li>Gameplay redesign</li>
                 <li>Submitting under your portal account (you get a checklist)</li>
               </ul>
-              <a class="btn" href="mailto:hello@nalbakigames.com?subject=Portal-ready%20build">Ask about this package</a>
+              <a class="btn ghost" href="mailto:hello@nalbakigames.com?subject=Portal-ready%20build">Ask about this package</a>
             </article>
 
             <article class="card pkg" data-package="playable">
@@ -155,7 +172,7 @@
                 <li>New art beyond simple shapes (your game's assets are used)</li>
                 <li>Running the ad campaign</li>
               </ul>
-              <a class="btn" href="mailto:hello@nalbakigames.com?subject=Playable%20ad">Ask about this package</a>
+              <a class="btn ghost" href="mailto:hello@nalbakigames.com?subject=Playable%20ad">Ask about this package</a>
             </article>
 
             <article class="card pkg" data-package="webgl">
@@ -175,7 +192,7 @@
                 <li>Back-end or CMS work</li>
                 <li>Open-ended hourly support</li>
               </ul>
-              <a class="btn" href="mailto:hello@nalbakigames.com?subject=three.js%20sprint">Ask about this package</a>
+              <a class="btn ghost" href="mailto:hello@nalbakigames.com?subject=three.js%20sprint">Ask about this package</a>
             </article>
           </div>
         </div>
@@ -184,7 +201,7 @@
       <section class="section" aria-labelledby="how-h">
         <div class="wrap">
           <div class="sec-head">
-            <p class="eyebrow">How it works</p>
+            <p class="kicker"><span class="pip"></span>How it works</p>
             <h2 id="how-h">From brief to handover</h2>
           </div>
           <ol class="steps">
@@ -196,10 +213,10 @@
         </div>
       </section>
 
-      <section class="section alt" aria-labelledby="faq-h">
+      <section class="section paper" aria-labelledby="faq-h">
         <div class="wrap">
           <div class="sec-head">
-            <p class="eyebrow">Questions</p>
+            <p class="kicker"><span class="pip"></span>Questions</p>
             <h2 id="faq-h">Before you ask</h2>
           </div>
           <div class="faq">
@@ -226,17 +243,25 @@
           </div>
         </div>
       </section>
-
-      <section class="section" aria-labelledby="cta-h">
+    
+      <section class="section" aria-labelledby="hire-h">
         <div class="wrap">
-          <div class="cta-band">
-            <img class="saucer" src="/assets/logo.svg" width="300" height="300" alt="" loading="lazy" />
-            <h2 id="cta-h">Get a fixed quote</h2>
-            <p>Write a few lines about your project. You get a reply with a scope, a price and a date.</p>
-            <div class="actions">
-              <a class="btn primary" href="mailto:hello@nalbakigames.com?subject=Project%20brief">hello@nalbakigames.com</a>
-              <a class="btn" href="/work">See the case studies</a>
+          <div class="hire on-dark" data-reveal>
+            <div>
+              <p class="kicker"><span class="pip"></span>Work with the studio</p>
+              <h2 id="hire-h">Get a fixed quote. <em>Usually within a day.</em></h2>
+              <p class="lead">Write a few lines about your project: what the player does, where it runs and when you need it. You get a reply with a scope, a price and a date.</p>
+              <div class="actions">
+                <a class="btn tea" href="mailto:hello@nalbakigames.com?subject=Project%20brief">Email the studio <span class="arrow" aria-hidden="true">&rarr;</span></a>
+                <a class="btn ghost" href="/work">See the case studies</a>
+              </div>
             </div>
+            <ul class="svc-list">
+              <li><a href="/services#packages"><b>Custom browser games</b><span>One core loop that feels good on a laptop and a phone, hosted anywhere.</span><span class="go" aria-hidden="true">&rarr;</span></a></li>
+              <li><a href="/services#packages"><b>three.js and WebGL</b><span>3D scenes, product viewers, and fixes for scenes that stutter on phones.</span><span class="go" aria-hidden="true">&rarr;</span></a></li>
+              <li><a href="/services#packages"><b>Playable ads</b><span>Single-file HTML5, MRAID-ready, inside your network&rsquo;s size limit.</span><span class="go" aria-hidden="true">&rarr;</span></a></li>
+              <li><a href="/services#packages"><b>Portal-ready builds</b><span>CrazyGames or Poki SDK, ad pacing, quality tiers, fast loads.</span><span class="go" aria-hidden="true">&rarr;</span></a></li>
+            </ul>
           </div>
         </div>
       </section>
@@ -244,30 +269,38 @@
 
     <footer class="site-foot">
       <div class="wrap">
-        <div class="foot-grid">
-          <div>
-            <a class="brand" href="/"><img src="/assets/logo.svg" width="38" height="38" alt="" /><span>Nalbaki <span>Games</span></span></a>
-            <p>A solo studio making fast, polished browser games, and building them to order.</p>
+        <div class="foot-top">
+          <div class="foot-pitch">
+            <p>Original games, served in the browser. Free to play.</p>
+            <a class="btn" href="/games">Pick a game <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
-          <nav aria-label="Footer">
+          <nav aria-label="Games">
+            <h2>Play</h2>
+            <ul>
+              <li><a href="https://parking-lot-ivory.vercel.app/">Parking Lot</a></li>
+              <li><a href="https://last-commit-standing.vercel.app/play">Last Commit Standing</a></li>
+              <li><a href="https://floor-42.vercel.app/characters">Floor 42</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Studio">
             <h2>Studio</h2>
             <ul>
-              <li><a href="/games">Games</a></li>
+              <li><a href="/about">About</a></li>
               <li><a href="/services">Services</a></li>
               <li><a href="/work">Work</a></li>
-              <li><a href="/about">About</a></li>
               <li><a href="/press">Press kit</a></li>
             </ul>
           </nav>
           <div>
-            <h2>Contact</h2>
+            <h2>Say hello</h2>
             <ul>
               <li><a href="mailto:hello@nalbakigames.com">hello@nalbakigames.com</a></li>
               <li><a href="/contact">Start a project</a></li>
             </ul>
           </div>
         </div>
-        <div class="legal"><span>&copy; 2026 Nalbaki Games</span><span>Made for the browser.</span></div>
+        <div class="foot-word"><img src="/assets/brand/nalbaki-wordmark-on-dark.svg" width="1200" height="489" alt="" loading="lazy" decoding="async" /></div>
+        <div class="legal"><span>&copy; 2026 Nalbaki Games</span><span>One more round.</span></div>
       </div>
     </footer>
     <script src="/pricing.js" defer></script>

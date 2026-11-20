@@ -6,7 +6,7 @@
     <title>Case studies · Nalbaki Games</title>
     <meta name="description" content="How Parking Lot, Floor 42 and Last Commit Standing were built: test counts, build sizes, load times and git timelines, with sources for every number." />
     <link rel="canonical" href="https://nalbakigames.com/work" />
-    <meta name="theme-color" content="#0f0e22" />
+    <meta name="theme-color" content="#f4efe6" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Nalbaki Games" />
     <meta property="og:title" content="Case studies · Nalbaki Games" />
@@ -15,37 +15,54 @@
     <meta property="og:image" content="https://nalbakigames.com/assets/og.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Nalbaki Games logo beside screenshots of Parking Lot, Floor 42 and Last Commit Standing" />
+    <meta property="og:image:alt" content="Nalbaki Games: a red tea glass on its saucer beside frames from Parking Lot, Last Commit Standing and Floor 42" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/bricolage-var.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/styles.css" />
+    <script>document.documentElement.classList.add('js')</script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
     <header class="site-head">
-      <div class="wrap">
-        <div class="head-row">
-          <a class="brand" href="/" aria-label="Nalbaki Games, home"><img src="/assets/logo.svg" width="38" height="38" alt="" /><span>Nalbaki <span>Games</span></span></a>
-          <a class="btn primary small head-cta" href="/contact">Start a project</a>
-        </div>
+      <div class="wrap head-row">
+        <a class="brand" href="/" aria-label="Nalbaki Games, home"><img src="/assets/brand/nalbaki-logo-on-light.svg" width="142" height="42" alt="" /></a>
         <nav class="nav" aria-label="Main">
           <a href="/games">Games</a>
+          <a href="/about">Studio</a>
           <a href="/services">Services</a>
           <a href="/work" aria-current="page">Work</a>
-          <a href="/about">About</a>
-          <a href="/press">Press kit</a>
+          <a href="/press">Press</a>
           <a href="/contact">Contact</a>
         </nav>
+        <a class="btn small head-cta" href="/games">Play free <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="label">Menu</span><span class="bars" aria-hidden="true"></span></button>
+      </div>
+      <div class="menu-panel" id="menu">
+        <nav aria-label="Main, phone">
+          <a href="/">Home</a>
+          <a href="/games">Games</a>
+          <a href="/about">Studio</a>
+          <a href="/services">Services</a>
+          <a href="/work" aria-current="page">Work</a>
+          <a href="/press">Press</a>
+          <a href="/contact">Contact</a>
+        </nav>
+        <div class="menu-foot">
+          <a href="mailto:hello@nalbakigames.com">hello@nalbakigames.com</a>
+          <a href="/contact">Start a project</a>
+        </div>
       </div>
     </header>
 
     <main id="main">
+
       <section class="page-head">
         <div class="wrap">
-          <p class="eyebrow">Work</p>
+          <p class="kicker"><span class="pip"></span>Work</p>
           <h1>Case studies, with the numbers.</h1>
           <p class="lead">These are the studio's own games, so every figure below can be checked: test counts from the test runner, sizes from the build report, load times from a scripted browser, and dates from git history. No client logos, no invented metrics.</p>
         </div>
@@ -161,17 +178,25 @@
           </div>
         </article>
       </section>
-
-      <section class="section" aria-labelledby="cta-h">
+    
+      <section class="section" aria-labelledby="hire-h">
         <div class="wrap">
-          <div class="cta-band">
-            <img class="saucer" src="/assets/logo.svg" width="300" height="300" alt="" loading="lazy" />
-            <h2 id="cta-h">Your project, measured the same way</h2>
-            <p>Client work comes with the same report: tests, build size and load time, so you know what you are getting.</p>
-            <div class="actions">
-              <a class="btn primary" href="/services">See packages <span class="arrow" aria-hidden="true">&rarr;</span></a>
-              <a class="btn" href="/contact">Start a project</a>
+          <div class="hire on-dark" data-reveal>
+            <div>
+              <p class="kicker"><span class="pip"></span>Work with the studio</p>
+              <h2 id="hire-h">Your project, <em>measured the same way.</em></h2>
+              <p class="lead">Client work comes with the same report: tests, build size and load time, so you know exactly what you are getting.</p>
+              <div class="actions">
+                <a class="btn tea" href="/services">Services and prices <span class="arrow" aria-hidden="true">&rarr;</span></a>
+                <a class="btn ghost" href="/contact">Send a brief</a>
+              </div>
             </div>
+            <ul class="svc-list">
+              <li><a href="/services#packages"><b>Custom browser games</b><span>One core loop that feels good on a laptop and a phone, hosted anywhere.</span><span class="go" aria-hidden="true">&rarr;</span></a></li>
+              <li><a href="/services#packages"><b>three.js and WebGL</b><span>3D scenes, product viewers, and fixes for scenes that stutter on phones.</span><span class="go" aria-hidden="true">&rarr;</span></a></li>
+              <li><a href="/services#packages"><b>Playable ads</b><span>Single-file HTML5, MRAID-ready, inside your network&rsquo;s size limit.</span><span class="go" aria-hidden="true">&rarr;</span></a></li>
+              <li><a href="/services#packages"><b>Portal-ready builds</b><span>CrazyGames or Poki SDK, ad pacing, quality tiers, fast loads.</span><span class="go" aria-hidden="true">&rarr;</span></a></li>
+            </ul>
           </div>
         </div>
       </section>
@@ -179,31 +204,40 @@
 
     <footer class="site-foot">
       <div class="wrap">
-        <div class="foot-grid">
-          <div>
-            <a class="brand" href="/"><img src="/assets/logo.svg" width="38" height="38" alt="" /><span>Nalbaki <span>Games</span></span></a>
-            <p>A solo studio making fast, polished browser games, and building them to order.</p>
+        <div class="foot-top">
+          <div class="foot-pitch">
+            <p>Original games, served in the browser. Free to play.</p>
+            <a class="btn" href="/games">Pick a game <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
-          <nav aria-label="Footer">
+          <nav aria-label="Games">
+            <h2>Play</h2>
+            <ul>
+              <li><a href="https://parking-lot-ivory.vercel.app/">Parking Lot</a></li>
+              <li><a href="https://last-commit-standing.vercel.app/play">Last Commit Standing</a></li>
+              <li><a href="https://floor-42.vercel.app/characters">Floor 42</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Studio">
             <h2>Studio</h2>
             <ul>
-              <li><a href="/games">Games</a></li>
+              <li><a href="/about">About</a></li>
               <li><a href="/services">Services</a></li>
               <li><a href="/work">Work</a></li>
-              <li><a href="/about">About</a></li>
               <li><a href="/press">Press kit</a></li>
             </ul>
           </nav>
           <div>
-            <h2>Contact</h2>
+            <h2>Say hello</h2>
             <ul>
               <li><a href="mailto:hello@nalbakigames.com">hello@nalbakigames.com</a></li>
               <li><a href="/contact">Start a project</a></li>
             </ul>
           </div>
         </div>
-        <div class="legal"><span>&copy; 2026 Nalbaki Games</span><span>Made for the browser.</span></div>
+        <div class="foot-word"><img src="/assets/brand/nalbaki-wordmark-on-dark.svg" width="1200" height="489" alt="" loading="lazy" decoding="async" /></div>
+        <div class="legal"><span>&copy; 2026 Nalbaki Games</span><span>One more round.</span></div>
       </div>
     </footer>
+    <script src="/site.js" defer></script>
   </body>
 </html>
