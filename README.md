@@ -9,7 +9,7 @@ Plain HTML, CSS and a few lines of JS. No build step, no dependencies.
 
 | Path | File | What it is |
 | --- | --- | --- |
-| `/` | `index.html` | "One more round" hero with the games fanned on a saucer, featured Parking Lot, a chapter per game, the studio, house rules, hire |
+| `/` | `index.html` | "One more round" hero over looping gameplay with a game-select row, featured Parking Lot, full-bleed key art chapter per game, the studio, house rules, hire |
 | `/games` | `games.html` | Parking Lot, Last Commit Standing, Floor 42: real gameplay clips, how a round plays, play links |
 | `/services` | `services.html` | Four fixed-price packages with scope; prices come from `pricing.js` |
 | `/work` | `work.html` | Case studies; every number lists its source |
@@ -43,25 +43,32 @@ directory `.`), then add `nalbakigames.com` and `www.nalbakigames.com` under Set
 
 ## Brand
 
-The mark is the pear-shaped Azerbaijani tea glass standing on its *nəlbəki* (saucer), drawn as one flat shape; the
-wordmark is "nalbaki" in Bricolage Grotesque with a small saucer as the dot of the i. Colours: tea red `#E5431F`,
-ink `#16110E`, porcelain `#F4EFE6`. White text on tea red is below 4.5:1, so buttons on red use ink text.
+The mark is a heavy, slanted N cut by a single slash; the wordmark is NALBAKI GAMES in Bricolage Grotesque, heavy and
+slanted. Colours: signal orange `#FF4D2E`, night `#0B0C10`, bone `#F2EFE8`; each game keeps its own accent (Parking Lot
+yellow, Last Commit Standing green, Floor 42 gold). Text on orange is always the dark night colour (white fails contrast).
 
-- `assets/brand/`: SVG logo lockups (`-on-light`, `-on-dark`, `-mono-ink`, `-mono-porcelain`), wordmarks, the mark
-  in red, ink and porcelain, the app tile, and a 512 px avatar PNG.
-- `favicon.svg` (red tile, simplified glass without the rim line so it holds at 16 px), `assets/favicon-16.png`,
+- `assets/brand/`: SVG logo lockups (`-on-dark`, `-on-light`, `-mono-light`, `-mono-dark`), wordmarks, the mark in
+  orange, light and dark, the app icon (orange chamfered tile), the square tile and a 512 px avatar PNG.
+- `favicon.svg` (orange tile, N without the slash so it holds at 16 px), `assets/favicon-16.png`,
   `assets/favicon-32.png`, `apple-touch-icon.png`, `assets/icon-192.png`, `assets/icon-512.png`, `assets/og.jpg`.
-- `docs/screens-redesign/brand-sheet.png` shows every version at size, including 16 and 32 px.
+- `docs/screens-redesign/brand-sheet.png` shows every version at size, including 16 and 32 px, the key art and the
+  share image.
+
+## Key art and clips
+
+`assets/img/ka-*.{avif,webp}` (960, 1600, 2560 px) are graded frames captured from the games running locally at 2x:
+Parking Lot from its cover camera rig, Last Commit Standing from the drop (dev camera flags), Floor 42 composed from
+the character-select renders over the arena. Titled 2560x1440 versions are in `assets/press/keyart-*.jpg`.
+`assets/video/hero-*.mp4` is the home page's 11.5 s gameplay loop cut from the three clips; it loads after the page.
 
 ## Files
 
-- `styles.css`: the whole design system (tokens at the top; each game has its own world: `.ch-pl`, `.ch-lcs`, `.ch-f42`).
-- `site.js`: phone menu, header that steps aside on scroll, scroll reveals, pointer tilt, the home page's game fan,
-  gameplay clips that play only while on screen (never with reduced motion or Save-Data), and prices.
+- `styles.css`: the whole design system (tokens at the top; each game has its own accent: `.ch-pl`, `.ch-lcs`, `.ch-f42`).
+- `site.js`: phone menu, header that steps aside on scroll, scroll reveals, pointer tilt, the home hero loop,
+  key-art zoom, gameplay clips that play only while on screen (never with reduced motion or Save-Data), and prices.
 - `assets/img/`: WebP posters and frames from the real games. `assets/video/`: 720p and 1280p clips, silent, 12 s.
 - `assets/press/`: full-size screenshots and logo PNGs.
 - `assets/fonts/bricolage-var.woff2`: Bricolage Grotesque variable latin subset, weight 400-800, width 75-100
   (SIL Open Font License 1.1).
-- `docs/screens-redesign/`: desktop (1440 px) and phone (390 px) screenshots of every page. `docs/screens/` holds the
-  previous design.
+- `docs/screens-redesign/`: desktop (1440 px) and phone (390 px) screenshots of every page.
 - `sitemap.xml`, `robots.txt`.
