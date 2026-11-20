@@ -3,217 +3,217 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Merge Conflict · settle it</title>
-    <meta
-      name="description"
-      content="Some conflicts can't be resolved in code. Free browser games for settling it with your coworkers: a 1v1 office shootout and a ten-player battle royale. Send a link, settle it."
-    />
-    <meta property="og:title" content="Merge Conflict · settle it" />
-    <meta property="og:description" content="Some conflicts can't be resolved in code. Send your coworker a link and settle it." />
-    <meta property="og:image" content="/assets/hero.jpg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <title>Nalbaki Games · Fast, polished browser games</title>
+    <meta name="description" content="Nalbaki Games is a solo studio making fast, polished 3D browser games, and building custom games, three.js work, playable ads and portal-ready builds at fixed prices." />
+    <link rel="canonical" href="https://nalbakigames.com/" />
+    <meta name="theme-color" content="#0f0e22" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nalbaki Games" />
+    <meta property="og:title" content="Nalbaki Games · Fast, polished browser games" />
+    <meta property="og:description" content="A solo studio shipping 3D web games, and building them to order: custom games, three.js, playable ads, portal-ready builds." />
+    <meta property="og:url" content="https://nalbakigames.com/" />
+    <meta property="og:image" content="https://nalbakigames.com/assets/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Nalbaki Games logo beside screenshots of Parking Lot, Floor 42 and Last Commit Standing" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" as="image" href="/assets/img/parking-lot-cover-720.webp" imagesrcset="/assets/img/parking-lot-cover-720.webp 720w, /assets/img/parking-lot-cover-1280.webp 1280w" imagesizes="(min-width: 960px) 460px, 78vw" fetchpriority="high" />
     <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Nalbaki Games",
+        "url": "https://nalbakigames.com/",
+        "logo": "https://nalbakigames.com/assets/icon-512.png",
+        "email": "hello@nalbakigames.com",
+        "description": "A solo studio making fast, polished browser games, and building them to order."
+      }
+    </script>
   </head>
   <body>
-    <!-- The whole first screen is the games, playing. -->
-    <header class="hero">
-      <video class="hero-video" src="/assets/hero.mp4" poster="/assets/hero.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
-      <div class="hero-shade"></div>
-      <nav class="top">
-        <a class="brand" href="/"><img src="/assets/logo-192.png" width="28" height="28" alt="" /><span><span class="ours">&lt;&lt;</span> MERGE <span class="theirs">CONFLICT</span></span></a>
-        <span class="top-links"><span class="live"><i></i> 2 games · free · in your browser</span><a class="support-link" href="/donate.html">&#9749; Support</a></span>
-      </nav>
-      <div class="hero-body">
-        <div class="eyebrow ours">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</div>
-        <h1>
-          <span class="ours">MERGE</span><br />
-          <span class="theirs">CONFLICT</span>
-        </h1>
-        <div class="eyebrow theirs">&gt;&gt;&gt;&gt;&gt;&gt;&gt; their-branch</div>
-        <p class="pitch">Some conflicts can't be resolved in code.<br />Send your coworker a link. Settle it.</p>
-        <nav class="cards" aria-label="Games">
-          <a class="card" style="--accent: var(--conflict)" href="https://floor-42.vercel.app/play">
-            <span class="card-img"><img src="/assets/card-floor42.jpg" width="640" height="400" alt="Two office workers face off on a night-time office floor in Floor 42" decoding="async" /></span>
-            <span class="card-body">
-              <span class="card-name">Floor 42</span>
-              <span class="card-hook">Code review got personal.</span>
-              <span class="card-foot"><span class="tag">1v1</span><span class="go">Play &rarr;</span></span>
-            </span>
-          </a>
-          <a class="card" style="--accent: var(--hot)" href="https://last-commit-standing.vercel.app/play">
-            <span class="card-img"><img src="/assets/card-lcs.jpg" width="640" height="400" alt="Top-down view of a firefight on a grass field in Last Commit Standing" loading="lazy" decoding="async" /></span>
-            <span class="card-body">
-              <span class="card-name">Last Commit Standing</span>
-              <span class="card-hook">Ten developers. One merge.</span>
-              <span class="card-foot"><span class="tag">up to 10</span><span class="go">Play &rarr;</span></span>
-            </span>
-          </a>
-          <a class="card soon" style="--accent: var(--cyan)" href="#parking-lot">
-            <span class="card-img"><img src="/assets/card-parking.jpg" width="640" height="400" alt="Four company cars at the entry gate of a busy car park in Parking Lot" loading="lazy" decoding="async" /></span>
-            <span class="card-body">
-              <span class="card-name">Parking Lot</span>
-              <span class="card-hook">Four company cars. One free space.</span>
-              <span class="card-foot"><span class="tag">Coming soon</span><span class="go">See more &darr;</span></span>
-            </span>
-          </a>
-        </nav>
-        <div class="steps">
-          <span><b>1</b> pick a game</span>
-          <span><b>2</b> send the link</span>
-          <span><b>3</b> settle it</span>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-head">
+      <div class="wrap">
+        <div class="head-row">
+          <a class="brand" href="/" aria-label="Nalbaki Games, home"><img src="/assets/logo.svg" width="38" height="38" alt="" /><span>Nalbaki <span>Games</span></span></a>
+          <a class="btn primary small head-cta" href="/contact">Start a project</a>
         </div>
+        <nav class="nav" aria-label="Main">
+          <a href="/games">Games</a>
+          <a href="/services">Services</a>
+          <a href="/work">Work</a>
+          <a href="/about">About</a>
+          <a href="/press">Press kit</a>
+          <a href="/contact">Contact</a>
+        </nav>
       </div>
-      <a class="scroll" href="#floor-42" aria-label="See the games">▼</a>
     </header>
 
-    <main>
-      <!-- One full section per game, its own gameplay running behind it. -->
-      <section class="game" id="floor-42" style="--accent: #ffd23f">
-        <video style="--ar: 1828 / 1028" src="/assets/floor42.mp4" poster="/assets/floor42.jpg" width="1828" height="1028" muted loop playsinline preload="metadata" aria-hidden="true"></video>
-        <div class="game-shade"></div>
-        <div class="game-body">
-          <div class="kicker">Game 01 · 1v1 office shootout</div>
-          <h2>Floor 42</h2>
-          <p class="hook">Code review got personal.</p>
-          <p>Two developers, one floor of guns, and the meeting table is your only cover. Two hits and you're out. First to five KOs takes the merge.</p>
-          <ul class="facts">
-            <li><b>2</b> players</li>
-            <li><b>~3</b> minutes</li>
-            <li><b>7</b> guns</li>
-            <li><b>phone</b> ready</li>
-          </ul>
-          <div class="actions">
-            <a class="btn big primary" href="https://floor-42.vercel.app/play">Play online →</a>
-            <a class="btn big" href="https://floor-42.vercel.app/characters">Practice vs bot</a>
-            <a class="btn" href="https://github.com/hacagahasanli/floor-42">Source</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="game right" id="last-commit-standing" style="--accent: #ff6a3d">
-        <video src="/assets/last-commit-standing.mp4" poster="/assets/last-commit-standing.jpg" width="1920" height="1080" muted loop playsinline preload="metadata" aria-hidden="true"></video>
-        <div class="game-shade"></div>
-        <div class="game-body">
-          <div class="kicker">Game 02 · battle royale</div>
-          <h2>Last Commit Standing</h2>
-          <p class="hook">Ten developers. One merge.</p>
-          <p>
-            Nobody agrees. Parachute into the same countryside with a pistol each, loot the farms and the river port, swim
-            the river, and stay inside the Deadline. Only the last commit standing gets merged.
-          </p>
-          <ul class="facts">
-            <li><b>2–10</b> players</li>
-            <li><b>bots</b> optional</li>
-            <li><b>~5</b> minutes</li>
-            <li><b>phone</b> ready</li>
-          </ul>
-          <div class="actions">
-            <a class="btn big hot" href="https://last-commit-standing.vercel.app/play">Play with friends →</a>
-            <a class="btn" href="https://github.com/hacagahasanli/last-commit-standing">Source</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="game" id="parking-lot" style="--accent: #4fd1ff">
-        <video src="/assets/parking-lot.mp4" poster="/assets/parking-lot.jpg" width="1920" height="1080" muted loop playsinline preload="metadata" aria-hidden="true"></video>
-        <div class="game-shade"></div>
-        <div class="game-body">
-          <div class="kicker">Game 03 · coming soon</div>
-          <h2>Parking Lot</h2>
-          <p class="hook">Four company cars. One free space.</p>
-          <p>
-            Touch nothing, park first. Hunt for the only empty bay while three rivals do the same, then climb a
-            multi-storey car park one stage at a time, past shoppers on foot and barriers that lift for nobody.
-          </p>
-          <ul class="facts">
-            <li><b>4</b> cars</li>
-            <li><b>1</b> free space</li>
-            <li><b>6</b> stages</li>
-            <li><b>touch</b> nothing</li>
-          </ul>
-          <div class="actions">
-            <span class="btn big disabled">Coming soon</span>
-            <a class="btn" href="https://github.com/hacagahasanli/parking-lot">Source</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Support: the honest ask. -->
-      <section class="tip" id="support" aria-labelledby="tip-h">
-        <div class="tip-inner">
-          <div class="tip-copy">
-            <div class="eyebrow ours">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD &middot; free games</div>
-            <h2 id="tip-h"><span class="ours">FREE GAMES</span><br /><span class="conflict">=======</span><br /><span class="theirs">YOUR COFFEE</span></h2>
-            <div class="eyebrow theirs">&gt;&gt;&gt;&gt;&gt;&gt;&gt; your-support</div>
-            <p class="tip-story">Merge Conflict is one person making free browser games for settling it with your coworkers. No ads. No accounts. No paywalls. Just a link.</p>
-            <p class="tip-story">If a game made your Monday better, a coffee pays for the servers that keep matches fast, and for the next game, from first idea to playable.</p>
-            <ul class="tip-pays">
-              <li><b>Servers</b> for lag-free online duels</li>
-              <li><b>New games</b> like Parking Lot</li>
-              <li><b>Late-night polish</b> on the little details</li>
-            </ul>
-          </div>
-          <div class="tip-card">
-            <div class="merge" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="m"></i></div>
-            <h3>Pick a coffee</h3>
-            <div class="tip-chips">
-              <a href="/donate.html?amount=3"><span aria-hidden="true">&#9749;</span><b>$3</b></a>
-              <a href="/donate.html?amount=5"><span aria-hidden="true">&#127829;</span><b>$5</b></a>
-              <a href="/donate.html?amount=10"><span aria-hidden="true">&#128663;</span><b>$10</b></a>
-            </div>
-            <a class="btn big primary tip-cta" href="/donate.html">&#9749; Buy the studio a coffee</a>
-            <p class="tip-fine">Pay what you want, from $1. Handled by itch.io.</p>
-            <div class="tip-pack">
-              <img src="/assets/wallpaper-desktop.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Thank-you wallpaper preview: the Merge Conflict logo and the words Thanks for the coffee" />
-              <p><b>Every donor gets the thank-you pack:</b> a desktop and a phone wallpaper.</p>
+    <main id="main">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <p class="eyebrow">Solo browser-game studio</p>
+            <h1>Fast, polished games <span class="accent">for the browser.</span></h1>
+            <p class="lead">Nalbaki Games ships its own 3D web games and builds them to order: custom browser games, three.js work, playable ads and portal-ready builds, each at a fixed price.</p>
+            <div class="actions">
+              <a class="btn primary" href="/games">Play the games <span class="arrow" aria-hidden="true">&rarr;</span></a>
+              <a class="btn" href="/services">Hire the studio</a>
             </div>
           </div>
+          <div class="hero-art">
+            <figure class="shot a">
+              <img src="/assets/img/parking-lot-cover-720.webp" srcset="/assets/img/parking-lot-cover-720.webp 720w, /assets/img/parking-lot-cover-1280.webp 1280w" sizes="(min-width: 960px) 460px, 78vw" width="1280" height="720" alt="Parking Lot: four cars race for the one free bay, seen from above" fetchpriority="high" />
+              <figcaption>Parking Lot</figcaption>
+            </figure>
+            <figure class="shot b">
+              <img src="/assets/img/card-floor-42-560.webp" width="560" height="350" alt="Floor 42: two fighters on a night-time office floor" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="shot c">
+              <img src="/assets/img/card-last-commit-standing-560.webp" width="560" height="350" alt="Last Commit Standing: a top-down firefight in tall grass" loading="lazy" decoding="async" />
+              <figcaption>Last Commit Standing</figcaption>
+            </figure>
+          </div>
         </div>
       </section>
 
-      <!-- What's next. -->
-      <section class="garage" id="garage">
-        <div class="garage-card small">
-          <div class="garage-body">
-            <div class="kicker">Game 04 · yours?</div>
-            <h2>Your idea</h2>
-            <p>Got a conflict that needs its own game? Pitch it.</p>
-            <a class="btn" href="https://github.com/hacagahasanli/merge-conflict/issues/new">Pitch a game</a>
+      <section class="section tight" aria-labelledby="proof-h">
+        <div class="wrap">
+          <h2 id="proof-h" class="eyebrow">Measured, not promised</h2>
+          <div class="proof">
+            <div><b>364</b><span>automated tests pass on the Parking Lot portal build</span></div>
+            <div><b>1.08&nbsp;MB</b><span>for the whole game build, 347&nbsp;KB gzipped</span></div>
+            <div><b>2.5&nbsp;s</b><span>from link to the race screen on an emulated fast 4G line</span></div>
+            <div><b>60&nbsp;Hz</b><span>server-authoritative online duel in Floor 42</span></div>
+          </div>
+          <p class="source-note">Measured on 20 Nov 2026 from the game repos. Method and sources on the <a href="/work">Work</a> page.</p>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="games-h">
+        <div class="wrap">
+          <div class="sec-head row">
+            <div>
+              <p class="eyebrow">Our games</p>
+              <h2 id="games-h">Three games, all in the browser</h2>
+              <p>No install, no account. Open a link and play on a laptop or a phone.</p>
+            </div>
+            <a class="btn" href="/games">All games <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+          <div class="grid three">
+            <article class="game-card">
+              <div class="media"><img src="/assets/img/card-parking-lot-560.webp" srcset="/assets/img/card-parking-lot-560.webp 560w, /assets/img/card-parking-lot-960.webp 960w" sizes="(min-width: 1000px) 360px, (min-width: 700px) 46vw, 92vw" width="560" height="350" alt="Four cars queue at the entry gate of a busy car park" loading="lazy" decoding="async" /></div>
+              <div class="body">
+                <div class="tags"><span class="tag mint">Driving</span><span class="tag">You vs 3 bots</span></div>
+                <h3>Parking Lot</h3>
+                <p>Race three bots to the one free parking space. Touch nothing, park first.</p>
+                <div class="actions"><a class="btn small" href="/games#parking-lot">See the game</a></div>
+              </div>
+            </article>
+            <article class="game-card">
+              <div class="media"><img src="/assets/img/card-last-commit-standing-560.webp" srcset="/assets/img/card-last-commit-standing-560.webp 560w, /assets/img/card-last-commit-standing-960.webp 960w" sizes="(min-width: 1000px) 360px, (min-width: 700px) 46vw, 92vw" width="560" height="350" alt="Top-down firefight on a grass field next to a red barn" loading="lazy" decoding="async" /></div>
+              <div class="body">
+                <div class="tags"><span class="tag mint">Battle royale</span><span class="tag">You vs 9 bots</span></div>
+                <h3>Last Commit Standing</h3>
+                <p>Ten drop in, one walks out. Loot, fight and outlast a closing zone.</p>
+                <div class="actions"><a class="btn primary small" href="https://last-commit-standing.vercel.app/play">Play <span class="arrow" aria-hidden="true">&rarr;</span></a><a class="btn small" href="/games#last-commit-standing">Details</a></div>
+              </div>
+            </article>
+            <article class="game-card">
+              <div class="media"><img src="/assets/img/card-floor-42-560.webp" srcset="/assets/img/card-floor-42-560.webp 560w, /assets/img/card-floor-42-960.webp 960w" sizes="(min-width: 1000px) 360px, (min-width: 700px) 46vw, 92vw" width="560" height="350" alt="Two fighters face off across a night-time office floor" loading="lazy" decoding="async" /></div>
+              <div class="body">
+                <div class="tags"><span class="tag mint">Duel</span><span class="tag">You vs a bot</span></div>
+                <h3>Floor 42</h3>
+                <p>A side-on shootout across an office floor. Two hits and you're out.</p>
+                <div class="actions"><a class="btn primary small" href="https://floor-42.vercel.app/characters">Play <span class="arrow" aria-hidden="true">&rarr;</span></a><a class="btn small" href="/games#floor-42">Details</a></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" aria-labelledby="services-h">
+        <div class="wrap">
+          <div class="sec-head row">
+            <div>
+              <p class="eyebrow">Services</p>
+              <h2 id="services-h">The same speed, on your project</h2>
+              <p>Fixed scope, fixed price, a playable build early and often. You own the code at the end.</p>
+            </div>
+            <a class="btn primary" href="/services">Packages and scope <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+          <div class="grid four">
+            <div class="card service">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="4" /><path d="M7 12h4M9 10v4M15.5 11h.01M18 13h.01" /></svg></span>
+              <h3>Custom browser games</h3>
+              <p>One core loop, built to feel good on desktop and phones, delivered as a static build you can host anywhere.</p>
+            </div>
+            <div class="card service">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7z" /><path d="m3 7 9 5 9-5M12 12v10" /></svg></span>
+              <h3>three.js / WebGL</h3>
+              <p>Interactive 3D scenes, product viewers and performance fixes for scenes that stutter on phones.</p>
+            </div>
+            <div class="card service">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3" /><path d="m10.5 9 4 3-4 3z" /></svg></span>
+              <h3>Playable ads</h3>
+              <p>Single-file HTML5 playables, MRAID-ready, inside your ad network's size limit, with an end card that converts.</p>
+            </div>
+            <div class="card service">
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z" /></svg></span>
+              <h3>Portal-ready builds</h3>
+              <p>CrazyGames or Poki SDK, ad pacing, quality tiers and a load under 5 seconds, packaged for upload.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="cta-h">
+        <div class="wrap">
+          <div class="cta-band">
+            <img class="saucer" src="/assets/logo.svg" width="300" height="300" alt="" loading="lazy" />
+            <h2 id="cta-h">Have a game in mind?</h2>
+            <p>Send a short brief: what the player does, where it will run, and when you need it. You get a fixed quote and a scope you can hold the studio to.</p>
+            <div class="actions">
+              <a class="btn primary" href="mailto:hello@nalbakigames.com?subject=Project%20brief">hello@nalbakigames.com</a>
+              <a class="btn" href="/work">See the case studies</a>
+            </div>
           </div>
         </div>
       </section>
     </main>
 
-
-    <footer>
-      <span>Merge Conflict · made by <a href="https://github.com/hacagahasanli">hacagahasanli</a></span>
-      <span class="muted">Every game is free, runs in the browser, and needs nothing but a link.</span>
+    <footer class="site-foot">
+      <div class="wrap">
+        <div class="foot-grid">
+          <div>
+            <a class="brand" href="/"><img src="/assets/logo.svg" width="38" height="38" alt="" /><span>Nalbaki <span>Games</span></span></a>
+            <p>A solo studio making fast, polished browser games, and building them to order.</p>
+          </div>
+          <nav aria-label="Footer">
+            <h2>Studio</h2>
+            <ul>
+              <li><a href="/games">Games</a></li>
+              <li><a href="/services">Services</a></li>
+              <li><a href="/work">Work</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/press">Press kit</a></li>
+            </ul>
+          </nav>
+          <div>
+            <h2>Contact</h2>
+            <ul>
+              <li><a href="mailto:hello@nalbakigames.com">hello@nalbakigames.com</a></li>
+              <li><a href="/contact">Start a project</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="legal"><span>&copy; 2026 Nalbaki Games</span><span>Made for the browser.</span></div>
+      </div>
     </footer>
-
-    <script>
-      // Videos play while on screen (saves battery on phones), never for reduced motion.
-      (() => {
-        const videos = document.querySelectorAll('video');
-        if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          videos.forEach((v) => {
-            v.removeAttribute('autoplay');
-            v.pause();
-          });
-          return;
-        }
-        const io = new IntersectionObserver(
-          (es) => es.forEach((e) => (e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause())),
-          { threshold: 0.15, rootMargin: '150px 0px' },
-        );
-        videos.forEach((v) => io.observe(v));
-      })();
-    </script>
   </body>
 </html>
