@@ -56,17 +56,24 @@ yellow, Last Commit Standing green, Floor 42 gold). Text on orange is always the
 
 ## Key art and clips
 
-`assets/img/ka-*.{avif,webp}` (960, 1600, 2560 px) are graded frames captured from the games running locally at 2x:
-Parking Lot from its cover camera rig, Last Commit Standing from the drop (dev camera flags), Floor 42 composed from
-the character-select renders over the arena. Titled 2560x1440 versions are in `assets/press/keyart-*.jpg`.
-`assets/video/hero-*.mp4` is the home page's 11.5 s gameplay loop cut from the three clips; it loads after the page.
+`assets/img/ka-*.{avif,webp}` (960, 1600, 2560 px) are frames captured from the games running locally at 2x:
+Parking Lot from its cover camera rig, Last Commit Standing from the parachute drop over the farm (seeded solo round),
+Floor 42 from a bot-against-bot match (a rocket across the office). `assets/img/card-*-960.{avif,webp}` are tighter
+crops of the same frames for the home page game cards. Titled 2560x1440 versions are in `assets/press/keyart-*.jpg`.
+
+The gameplay clips are recorded frame by frame: each game runs in Chrome on virtual time (requestAnimationFrame,
+`performance.now` and `Date.now` advance 1/60 s per frame, with `Math.random` seeded), every frame is screenshotted
+at 1920x1080 and the frames are encoded afterwards, so the footage is smooth whatever the machine. HUD text is hidden.
+Each game has `assets/video/<game>-1080.{webm,mp4}` (60 fps) and `<game>-720.{webm,mp4}` (30 fps, for phones):
+VP9 two-pass and H.264 High CRF 20, 12-15 s, silent, with a poster `assets/img/<game>-poster-1280.webp` from the same
+footage. `assets/video/hero-*` is the home page's gameplay loop; it loads after the page.
 
 ## Files
 
 - `styles.css`: the whole design system (tokens at the top; each game has its own accent: `.ch-pl`, `.ch-lcs`, `.ch-f42`).
 - `site.js`: phone menu, header that steps aside on scroll, scroll reveals, pointer tilt, the home hero loop,
   key-art zoom, gameplay clips that play only while on screen (never with reduced motion or Save-Data), and prices.
-- `assets/img/`: WebP posters and frames from the real games. `assets/video/`: 720p and 1280p clips, silent, 12 s.
+- `assets/img/`: WebP posters and frames from the real games. `assets/video/`: 1080p60 and 720p30 clips (VP9 WebM and H.264 MP4), silent, 12-15 s.
 - `assets/press/`: full-size screenshots and logo PNGs.
 - `assets/fonts/bricolage-var.woff2`: Bricolage Grotesque variable latin subset, weight 400-800, width 75-100
   (SIL Open Font License 1.1).
