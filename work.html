@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Case studies · Nalbaki Games</title>
+    <meta name="description" content="How Parking Lot, Floor 42 and Last Commit Standing were built: test counts, build sizes, load times and git timelines, with sources for every number." />
+    <link rel="canonical" href="https://nalbakigames.com/work" />
+    <meta name="theme-color" content="#0f0e22" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nalbaki Games" />
+    <meta property="og:title" content="Case studies · Nalbaki Games" />
+    <meta property="og:description" content="How Parking Lot, Floor 42 and Last Commit Standing were built: test counts, build sizes, load times and git timelines, with sources for every number." />
+    <meta property="og:url" content="https://nalbakigames.com/work" />
+    <meta property="og:image" content="https://nalbakigames.com/assets/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Nalbaki Games logo beside screenshots of Parking Lot, Floor 42 and Last Commit Standing" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-head">
+      <div class="wrap">
+        <div class="head-row">
+          <a class="brand" href="/" aria-label="Nalbaki Games, home"><img src="/assets/logo.svg" width="38" height="38" alt="" /><span>Nalbaki <span>Games</span></span></a>
+          <a class="btn primary small head-cta" href="/contact">Start a project</a>
+        </div>
+        <nav class="nav" aria-label="Main">
+          <a href="/games">Games</a>
+          <a href="/services">Services</a>
+          <a href="/work" aria-current="page">Work</a>
+          <a href="/about">About</a>
+          <a href="/press">Press kit</a>
+          <a href="/contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-head">
+        <div class="wrap">
+          <p class="eyebrow">Work</p>
+          <h1>Case studies, with the numbers.</h1>
+          <p class="lead">These are the studio's own games, so every figure below can be checked: test counts from the test runner, sizes from the build report, load times from a scripted browser, and dates from git history. No client logos, no invented metrics.</p>
+        </div>
+      </section>
+
+      <section class="wrap" aria-label="Case studies">
+        <article class="case" id="parking-lot">
+          <figure class="clip">
+            <img src="/assets/img/parking-lot-cover-720.webp" srcset="/assets/img/parking-lot-cover-720.webp 720w, /assets/img/parking-lot-cover-1280.webp 1280w" sizes="(min-width: 960px) 520px, 92vw" width="1280" height="720" alt="Parking Lot cover art: four cars close in on one free bay, seen from above" />
+          </figure>
+          <div>
+            <div class="tags"><span class="tag mint">Portal build</span><span class="tag">three.js</span><span class="tag">CrazyGames SDK v3</span></div>
+            <h2>Parking Lot: a portal-ready build</h2>
+            <p>A careful-driving race against three bots, rebuilt as one static folder for CrazyGames: straight into the race, ads only between rounds, and graphics that scale down on weak devices.</p>
+            <div class="kv">
+              <div><b>364</b><span>tests passing (8 test files)</span></div>
+              <div><b>1.08&nbsp;MB</b><span>whole build, 9 files</span></div>
+              <div><b>347&nbsp;KB</b><span>over the wire, gzipped</span></div>
+              <div><b>2.5&nbsp;s</b><span>to the race screen, emulated fast 4G</span></div>
+              <div><b>6.6&nbsp;s</b><span>on slow 4G with a 4&times; slower CPU</span></div>
+              <div><b>2 days</b><span>first commit to portal build, per git</span></div>
+            </div>
+
+            <h3>What was built</h3>
+            <ul class="ticks">
+              <li>A small platform interface with a CrazyGames SDK v3 adapter (loading, gameplay events, midgame and rewarded ads, mute, device type, saved data) and a no-op fallback when the SDK is missing or takes over 4 s. A Poki or Yandex adapter is one more file.</li>
+              <li>Ad pacing: a midgame ad only after at least 2 rounds and 120 s of play, at most every 180 s. The rewarded hint is offered only after a lost round, next to an equal "No thanks" button.</li>
+              <li>Low, medium and high quality tiers picked from the device, with an automatic step-down after 4 s under 40 fps.</li>
+              <li>A build check that fails on absolute paths, more than 1,500 files, more than 20 MB, or any outbound URL other than the portal SDK.</li>
+              <li>Cover art rendered from the game at 1920&times;1080, 800&times;1200 and 800&times;800.</li>
+            </ul>
+
+            <h3>Timeline from git</h3>
+            <ol class="timeline">
+              <li><time datetime="2026-11-18T17:32">18 Nov 2026, 17:32</time>First commit: four cars, one free bay, first to park wins</li>
+              <li><time datetime="2026-11-18T20:35">18 Nov, 20:35</time>A four-deck car park and six stages, with bots tested in every stage</li>
+              <li><time datetime="2026-11-20T18:35">20 Nov, 18:35</time>Portal adapter, ad scheduler and performance tiers</li>
+              <li><time datetime="2026-11-20T18:57">20 Nov, 18:57</time>Portal build, build checks and covers</li>
+            </ol>
+            <p class="sources">Sources: <code>npm run test:run</code> and <code>npm run build:portal</code> on the <code>portal-build</code> branch, run on 20 Nov 2026; load times from the repo's <code>scripts/portal-load.mjs</code> (headless Chromium, local server, cache off, three runs each: 2.48 to 2.50 s and 6.57 to 6.64 s); design details from <code>docs/TECHNICAL.md</code> section 14.</p>
+          </div>
+        </article>
+
+        <article class="case" id="floor-42">
+          <figure class="clip">
+            <img src="/assets/img/floor-42-720.webp" srcset="/assets/img/floor-42-720.webp 720w, /assets/img/floor-42-1280.webp 1280w" sizes="(min-width: 960px) 520px, 92vw" width="1280" height="720" alt="Floor 42: a fighter jumps across a night-time office while the other takes cover" loading="lazy" decoding="async" />
+          </figure>
+          <div>
+            <div class="tags"><span class="tag mint">Online netcode</span><span class="tag">three.js</span><span class="tag">Colyseus on Fly.io</span></div>
+            <h2>Floor 42: an online duel that stays fair</h2>
+            <p>A side-on 1v1 shootout where the server, or the host's browser, runs the same simulation as the client and decides every hit. The bot and the online mode share one rules engine.</p>
+            <div class="kv">
+              <div><b>60&nbsp;Hz</b><span>fixed-step simulation, same on server and client</span></div>
+              <div><b>30/s</b><span>snapshots from the authority</span></div>
+              <div><b>150&nbsp;ms</b><span>cap on lag-compensation rewind</span></div>
+              <div><b>59</b><span>tests passing</span></div>
+              <div><b>2&nbsp;h&nbsp;41&nbsp;min</b><span>first commit to online 1v1, per git</span></div>
+              <div><b>3</b><span>bot difficulty levels</span></div>
+            </div>
+
+            <h3>What was built</h3>
+            <ul class="ticks">
+              <li>A deterministic simulation: fixed 1/60 s steps, a seeded random generator stored in the game state, and drawing interpolated between ticks so motion stays smooth at any refresh rate.</li>
+              <li>An online mode with client prediction, numbered snapshots and a buffered timeline for the rival, plus a direct peer connection with relay fallback.</li>
+              <li>A lag fix tested on an injected bad network (80 to 180 ms latency, 20 to 60 ms jitter, 1 to 5% loss): the median gap between where a player was hit and where they saw themselves fell from 0.8&ndash;1.4 units to 0.1&ndash;0.3 on direct connections.</li>
+              <li>Touch controls, landscape layout and full screen on phones.</li>
+            </ul>
+
+            <h3>Timeline from git</h3>
+            <ol class="timeline">
+              <li><time datetime="2026-11-17T12:10">17 Nov 2026, 12:10</time>First commit: playable prototype with a bot opponent</li>
+              <li><time datetime="2026-11-17T14:51">17 Nov, 14:51</time>Online 1v1 on a Colyseus server on Fly.io, with client prediction</li>
+              <li><time datetime="2026-11-17T22:35">17 Nov, 22:35</time>Playable on phones: touch controls, landscape, full screen</li>
+              <li><time datetime="2026-11-20T15:02">20 Nov, 15:02</time>Netcode rework for players in different countries</li>
+            </ol>
+            <p class="sources">Sources: <code>docs/TECHNICAL.md</code> (timestep, snapshots, server loop), the commit "Online play stays smooth and fair across countries" (network test and results), and <code>npx vitest run</code> on 20 Nov 2026.</p>
+          </div>
+        </article>
+
+        <article class="case" id="last-commit-standing">
+          <figure class="clip">
+            <img src="/assets/img/last-commit-standing-720.webp" srcset="/assets/img/last-commit-standing-720.webp 720w, /assets/img/last-commit-standing-1280.webp 1280w" sizes="(min-width: 960px) 520px, 92vw" width="1280" height="720" alt="Last Commit Standing: fighters trade fire on a grass field beside a red barn" loading="lazy" decoding="async" />
+          </figure>
+          <div>
+            <div class="tags"><span class="tag mint">Battle royale</span><span class="tag">three.js</span><span class="tag">Bots + online rooms</span></div>
+            <h2>Last Commit Standing: ten players in a browser tab</h2>
+            <p>A top-down battle royale with a parachute drop, loot, a river to swim and a closing zone. You play solo against nine bots, or share a link and fill a room with friends while bots take the empty places.</p>
+            <div class="kv">
+              <div><b>10</b><span>players per round</span></div>
+              <div><b>9</b><span>bots in a solo round</span></div>
+              <div><b>32</b><span>tests passing</span></div>
+              <div><b>5&nbsp;h&nbsp;22&nbsp;min</b><span>first commit to phone controls, per git</span></div>
+              <div><b>7&nbsp;h&nbsp;19&nbsp;min</b><span>first commit to online rooms, per git</span></div>
+              <div><b>6</b><span>weapon types</span></div>
+            </div>
+
+            <h3>What was built</h3>
+            <ul class="ticks">
+              <li>A simulation that runs the whole round (drop, loot, zone, bots) separately from the renderer, so the same rules drive solo and online play.</li>
+              <li>Online rooms of up to ten where the host's browser runs the round and a small lobby server on Fly.io connects players.</li>
+              <li>Characters animated with two-bone IK for arms and legs, and a generated countryside with grass, trees and wind.</li>
+              <li>A virtual stick and thumb buttons, with a camera and HUD that fit a phone.</li>
+            </ul>
+
+            <h3>Timeline from git</h3>
+            <ol class="timeline">
+              <li><time datetime="2026-11-17T20:27">17 Nov 2026, 20:27</time>First commit: design doc and battle royale simulation</li>
+              <li><time datetime="2026-11-17T20:33">17 Nov, 20:33</time>Playable prototype: drop, loot, zone, minimap, results against 9 bots</li>
+              <li><time datetime="2026-11-18T01:49">18 Nov, 01:49</time>Playable on phones</li>
+              <li><time datetime="2026-11-18T03:46">18 Nov, 03:46</time>Online rooms of up to ten, bots optional</li>
+            </ol>
+            <p class="sources">Sources: git history, <code>README.md</code>, <code>docs/TECHNICAL.md</code> sections 4 and 5, and <code>npx vitest run</code> on 20 Nov 2026.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" aria-labelledby="cta-h">
+        <div class="wrap">
+          <div class="cta-band">
+            <img class="saucer" src="/assets/logo.svg" width="300" height="300" alt="" loading="lazy" />
+            <h2 id="cta-h">Your project, measured the same way</h2>
+            <p>Client work comes with the same report: tests, build size and load time, so you know what you are getting.</p>
+            <div class="actions">
+              <a class="btn primary" href="/services">See packages <span class="arrow" aria-hidden="true">&rarr;</span></a>
+              <a class="btn" href="/contact">Start a project</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-foot">
+      <div class="wrap">
+        <div class="foot-grid">
+          <div>
+            <a class="brand" href="/"><img src="/assets/logo.svg" width="38" height="38" alt="" /><span>Nalbaki <span>Games</span></span></a>
+            <p>A solo studio making fast, polished browser games, and building them to order.</p>
+          </div>
+          <nav aria-label="Footer">
+            <h2>Studio</h2>
+            <ul>
+              <li><a href="/games">Games</a></li>
+              <li><a href="/services">Services</a></li>
+              <li><a href="/work">Work</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/press">Press kit</a></li>
+            </ul>
+          </nav>
+          <div>
+            <h2>Contact</h2>
+            <ul>
+              <li><a href="mailto:hello@nalbakigames.com">hello@nalbakigames.com</a></li>
+              <li><a href="/contact">Start a project</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="legal"><span>&copy; 2026 Nalbaki Games</span><span>Made for the browser.</span></div>
+      </div>
+    </footer>
+  </body>
+</html>
