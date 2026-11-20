@@ -10,9 +10,9 @@
 window.NALBAKI_PRICING = {
   currency: 'USD',
   packages: {
-    playable: { price: null, days: 5, unit: 'per playable' }, // PLACEHOLDER: set price
-    portal: { price: null, days: 5, unit: 'per game' }, // PLACEHOLDER: set price
-    game: { price: null, days: 10, unit: 'fixed price' }, // PLACEHOLDER: set price
-    webgl: { price: null, days: 5, unit: 'per sprint' }, // PLACEHOLDER: set price
+    playable: { price: 380, days: 5, unit: 'per playable' },
+    portal: { price: 400, days: 5, unit: 'per game' },
+    game: { price: 900, days: 10, unit: 'fixed price' },
+    webgl: { price: 300, days: 5, unit: 'per sprint' },
   },
 };
