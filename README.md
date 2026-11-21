@@ -50,7 +50,7 @@ yellow, Last Commit Standing green, Floor 42 gold). Text on orange is always the
 
 - `assets/brand/`: SVG logo lockups (`-on-dark`, `-on-light`, `-mono-light`, `-mono-dark`), wordmarks, the mark in
   orange, light and dark, the app icon (orange chamfered tile), the square tile and a 512 px avatar PNG.
-- `favicon.svg` (orange tile, N without the slash so it holds at 16 px), `assets/favicon-16.png`,
+- `favicon.ico` (16-64 px, the slashed N on night, same as the app icon), `assets/favicon-16.png`,
   `assets/favicon-32.png`, `apple-touch-icon.png`, `assets/icon-192.png`, `assets/icon-512.png`, `assets/og.jpg`.
 - `docs/screens-redesign/brand-sheet.png` shows every version at size, including 16 and 32 px, the key art and the
   share image.
