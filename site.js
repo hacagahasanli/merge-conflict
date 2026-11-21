@@ -4,6 +4,7 @@
 // 3. Home hero gameplay loop (lazy, pausable) and key-art zoom on scroll.
 // 4. Gameplay clips play only while on screen, never under reduced motion or Save-Data; each gets a pause button.
 // 5. The services page fills its prices from pricing.js.
+// 6. Anonymous visit counting through t.js, and the opt-out on /privacy.
 (() => {
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const saveData = navigator.connection?.saveData === true;
@@ -298,5 +299,83 @@
       }
       if (days && p.days) days.textContent = `${p.days} working days`;
     });
+  }
+  // 6. Anonymous visit counting (what it counts and how to switch it off: /privacy). t.js defines window.nbStats and sends nothing
+  // until init() gets an endpoint; it stays off for Global Privacy Control, automated browsers, ?nostats and a stored opt-out.
+  const stats = window.nbStats;
+  const OFF_KEY = 'nb_off';
+  const storedOff = () => {
+    try {
+      return localStorage.getItem(OFF_KEY) === '1';
+    } catch {
+      return false;
+    }
+  };
+  if (stats && /(^|\.)nalbakigames\.com$/.test(location.hostname)) {
+    stats.init({ endpoint: 'https://stats.nalbakigames.com/v1/b', game: 'site', build: 'site-1' });
+    stats.track('page_view', { path: location.pathname });
+    const GAMES = { 'parkinglot.nalbakigames.com': 'parking-lot', 'lastcommit.nalbakigames.com': 'lcs', 'floor42.nalbakigames.com': 'floor-42' };
+    const whereOf = (a) => {
+      const marked = a.closest('[data-where]');
+      if (marked) return marked.dataset.where;
+      if (a.closest('.site-head')) return 'header';
+      if (a.closest('.site-foot')) return 'footer';
+      const s = a.closest('section');
+      return (s && (s.id || (s.className || '').split(' ')[0])) || 'page';
+    };
+    // Attribution travels as UTM tags on the link (never an id): the game reads them when its own session starts.
+    const onLink = (e) => {
+      if (e.button > 1) return;
+      const a = e.composedPath().find((n) => n.tagName === 'A' && n.href);
+      if (!a) return;
+      let u;
+      try {
+        u = new URL(a.href, location.href);
+      } catch {
+        return;
+      }
+      const game = GAMES[u.hostname];
+      if (game) {
+        const where = whereOf(a);
+        stats.track('play_click', { game, where });
+        if (!u.searchParams.has('utm_source')) {
+          u.searchParams.set('utm_source', 'site');
+          u.searchParams.set('utm_content', where);
+          a.href = u.href;
+        }
+      } else if (u.hostname === 'mergeconflictgames.itch.io' && u.pathname.startsWith('/support')) {
+        stats.track('support_click', { where: location.pathname === '/support' ? 'support-page' : location.pathname === '/' ? 'home' : whereOf(a) });
+      }
+    };
+    document.addEventListener('click', onLink, true);
+    document.addEventListener('auxclick', onLink, true);
+  }
+  const toggle = document.querySelector('[data-stats-toggle]');
+  const status = document.querySelector('[data-stats-status]');
+  if (toggle && status) {
+    const off = () => (stats ? stats.isOptedOut() : storedOff());
+    const show = () => {
+      toggle.textContent = off() ? 'Start counting this device again' : 'Stop counting this device';
+      status.textContent = navigator.globalPrivacyControl
+        ? 'Your browser sends Global Privacy Control, so counting is already off.'
+        : off()
+          ? 'Counting is off on this device. Nothing is sent and nothing is stored.'
+          : 'Counting is on for this device.';
+    };
+    toggle.addEventListener('click', () => {
+      if (off()) {
+        if (stats) stats.optIn();
+        else
+          try {
+            localStorage.removeItem(OFF_KEY);
+          } catch {}
+      } else if (stats) stats.optOut();
+      else
+        try {
+          localStorage.setItem(OFF_KEY, '1');
+        } catch {}
+      show();
+    });
+    show();
   }
 })();
