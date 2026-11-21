@@ -13,6 +13,7 @@ Plain HTML, CSS and a few lines of JS. No build step, no dependencies.
 | `/games` | `games.html` | Parking Lot, Last Commit Standing, Floor 42: real gameplay clips, how a round plays, play links |
 | `/services` | `services.html` | Four fixed-price packages with scope; prices come from `pricing.js` |
 | `/work` | `work.html` | Case studies; every number lists its source |
+| `/playables` | `playables.html` | Three live playable ads in phone frames (builds in `assets/playables/`, styles and loader in `playables.css` and `playables.js`); numbers from each playable repo's size and verify reports |
 | `/about` | `about.html` | One-developer studio, how the work is done, the name |
 | `/contact` | `contact.html` | `mailto:hello@nalbakigames.com` and what to put in a brief |
 | `/press` | `press.html` | Fact sheet, descriptions, logos, colours, screenshots |
