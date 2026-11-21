@@ -370,6 +370,7 @@ loadFailed: false,
 bootAt: typeof performance !== 'undefined' ? performance.now() : 0,
 };
 capQueue();
+const leftover = queue.length > 0;
 if (ensureSession(now))
 pushRaw('session_start', now, cleanProps(sessionStartProps()));
 const hide = () => {
@@ -389,7 +390,7 @@ window.addEventListener('unhandledrejection', (e) => onError('promise', e.reason
 setInterval(() => void send(false), FLUSH_EVERY);
 if (o.game !== 'site')
 setInterval(() => document.visibilityState === 'visible' && push('ping', undefined), PING_EVERY);
-if (queue.length)
+if (leftover)
 void send(false);
 }
 catch {
