@@ -10,14 +10,21 @@
  * Variants: home | page | menu | pause | results. Without `href` it renders a neutral thank-you with no links at all.
  * React and other frameworks: `mountSupport(element, options)` (below) creates and configures one, returning a cleanup.
  */
-import { PAYS, TIERS, ctaLabel, ctaNote, finePrint, linkProvider, normalizeWorld, parseAmount, selectionStatus, supportersLine, thanksNote, tierByAmount, tierById } from './core.js';
+import { DEFAULT_TIER, PAYS, TIERS, ctaLabel, ctaNote, finePrint, linkProvider, normalizeWorld, parseAmount, selectionStatus, supportersLine, thanksNote, tierByAmount, tierById } from './core.js';
 import { ARROW, payIcon, tierIcon } from './art.js';
 import { CSS } from './styles.js';
 
 const VARIANTS = ['home', 'page', 'menu', 'pause', 'results'];
 
+/** The headline: "Free games", a row of blocks like a loading bar (the last two still loading), "your round". */
+const BAR = `<span class="bar" aria-hidden="true">${[0, 1, 2, 3, 4, 5, 6, 7].map((i) => `<i${i > 5 ? ' class="o"' : ''} style="--i:${i}"></i>`).join('')}</span>`;
+const TITLE = `<span class="l1">Free games</span><span class="sr">, </span>${BAR}<span class="l2">your round</span>`;
+const SPARKS = 8;
+const CONFETTI = 18;
+
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const reducedMotion = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const finePointer = () => typeof matchMedia === 'function' && matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 /** One fetch per data URL, shared by every instance on the page. Failures resolve to "no count". */
 const worldCache = new Map();
@@ -41,7 +48,7 @@ export class NalbakiSupport extends HTMLElement {
 
   constructor() {
     super();
-    this._tier = null;
+    this._tier = DEFAULT_TIER;
     this._custom = null;
     this._world = normalizeWorld(null);
     this._provider = null;
@@ -89,9 +96,9 @@ export class NalbakiSupport extends HTMLElement {
     return this.getAttribute('href') || '';
   }
 
-  /** "5" picks the $5 chip; any other valid amount fills the own-amount field (home and page only). */
+  /** With no amount the $3 chip is picked. "5" picks the $5 chip; any other valid amount fills the own-amount field (home and page only). */
   _preselect(raw) {
-    this._tier = null;
+    this._tier = DEFAULT_TIER;
     this._custom = null;
     if (raw == null || raw === '') return;
     const t = tierByAmount(raw);
@@ -225,9 +232,9 @@ export class NalbakiSupport extends HTMLElement {
     }
 
     if (v === 'home') {
-      return `<div class="ns home">
+      return `<div class="ns home fx">
         <div class="copy">
-          ${this._h('title', '<span class="l1">Free games</span><span class="sr">, </span><span class="bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i></span><span class="l2">your round</span>', 0, 2)}
+          ${this._h('title', TITLE, 0, 2)}
           <p class="story">Nalbaki is a small studio making free games that run in your browser. No install, no account, no paywall. Just a link.</p>
           <p class="story">If a round made your day, your support pays for the servers that keep matches quick, and for the next game.</p>
           <ul class="pays short">${PAYS.map((p) => `<li class="py-${p.id}"><b>${p.title}</b> ${p.short}</li>`).join('')}</ul>
@@ -239,13 +246,14 @@ export class NalbakiSupport extends HTMLElement {
 
     // page
     const pack = this._packImgs();
-    return `<div class="ns page">
+    return `<div class="ns page fx">
       <div class="intro">
-        ${this._h('title', '<span class="l1">Support</span> <span class="l2">the next</span> <span class="l3">round</span>', 0, 1)}
-        <p class="story">Our games are free and always will be. Servers, new games and late-night polish are not. If a round made your day, help us make the next one.</p>
+        ${this._h('title', TITLE, 0, 1)}
+        <p class="story">Nalbaki is a small studio making free games that run in your browser. No install, no account, no paywall. Just a link.</p>
+        <p class="story">Servers, new games and late-night polish are not free. If a round made your day, your support pays for them and for the next game.</p>
         <p class="count" hidden></p>
       </div>
-      ${this._panel('page')}
+      <div class="panel-glow">${this._panel('page')}</div>
       <div class="pays-wrap">
         ${this._h('s-title', 'What your support pays for', 1, 1)}
         <ul class="pays">${PAYS.map((p) => `<li class="py-${p.id}"><span class="ico">${payIcon(p.id)}</span><span><b>${p.title}</b> ${p.line}</span></li>`).join('')}</ul>
@@ -287,6 +295,58 @@ export class NalbakiSupport extends HTMLElement {
     }
     const cta = root.querySelector('.cta');
     if (cta) cta.addEventListener('click', (e) => this._go(e, cta));
+    // Tilt the thank-you previews toward the pointer (mouse only; never under reduced motion).
+    root.querySelectorAll('.pack-imgs img').forEach((img) => {
+      img.addEventListener('pointermove', (e) => {
+        if (e.pointerType !== 'mouse' || reducedMotion() || !finePointer()) return;
+        const r = img.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        img.style.setProperty('--ry', `${(x * 14).toFixed(2)}deg`);
+        img.style.setProperty('--rx', `${(-y * 10).toFixed(2)}deg`);
+        img.classList.add('tilt');
+      });
+      img.addEventListener('pointerleave', () => {
+        img.style.removeProperty('--rx');
+        img.style.removeProperty('--ry');
+        img.classList.remove('tilt');
+      });
+    });
+  }
+
+  /** Decorative bursts on the home and page variants only; the game cards stay calm. */
+  _fx() {
+    return !!this.shadowRoot.querySelector('.fx') && !reducedMotion();
+  }
+
+  _burst(host, cls, n, make) {
+    host.querySelector(`:scope > .${cls}`)?.remove();
+    const box = document.createElement('span');
+    box.className = cls;
+    box.setAttribute('aria-hidden', 'true');
+    box.innerHTML = Array.from({ length: n }, (_, i) => `<i style="${make(i)}"></i>`).join('');
+    host.appendChild(box);
+    setTimeout(() => box.remove(), 1200);
+  }
+
+  _spark(id) {
+    if (!this._fx()) return;
+    const chip = this.shadowRoot.querySelector(`input[name="amount"][value="${id}"] + .chip-in`);
+    if (chip) this._burst(chip, 'sparks', SPARKS, (i) => `--a:${(360 / SPARKS) * i + 22.5}deg`);
+  }
+
+  _confetti() {
+    if (!this._fx()) return;
+    const row = this.shadowRoot.querySelector('.cta-row');
+    if (!row) return;
+    this._burst(row, 'confetti', CONFETTI, (i) => {
+      const t = i / (CONFETTI - 1) - 0.5;
+      const dx = Math.round(t * 340 + (Math.random() - 0.5) * 40);
+      const dy = Math.round(-70 - Math.random() * 90);
+      const r = Math.round((Math.random() - 0.5) * 540);
+      const d = Math.round(Math.random() * 90);
+      return `--dx:${dx}px;--dy:${dy}px;--r:${r}deg;--d:${d}ms;--c:${['var(--k-accent)', 'var(--k-bone)', 'var(--k-ember)'][i % 3]}`;
+    });
   }
 
   _check(id, announce) {
@@ -311,6 +371,7 @@ export class NalbakiSupport extends HTMLElement {
     }
     this._applyCta();
     this._announce();
+    this._spark(id);
     // A tap on Own goes straight to the field; arrow keys stay in the radio group.
     if (id === 'custom' && this._pointer) this.shadowRoot.getElementById('own-amt')?.focus({ preventScroll: true });
   }
@@ -364,6 +425,7 @@ export class NalbakiSupport extends HTMLElement {
       void cta.offsetWidth;
       cta.classList.add('pop');
     }
+    if (ok) this._confetti();
   }
 
   _applyWorld() {

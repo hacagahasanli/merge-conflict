@@ -5,7 +5,7 @@
 
 /**
  * The support tiers. `amount` is in US dollars; the custom tier has none. `suggested` marks the one we suggest; it is
- * never pre-selected and never called "most popular" (we have no such numbers).
+ * never called "most popular" (we have no such numbers). The smallest tier ($3) is picked by default.
  */
 export const TIERS = Object.freeze([
   { id: 'spark', amount: 3, name: 'Tiny spark' },
@@ -13,6 +13,9 @@ export const TIERS = Object.freeze([
   { id: 'super', amount: 10, name: 'Super supporter' },
   { id: 'custom', amount: null, name: 'Your own amount' },
 ]);
+
+/** The chip picked when the page opens without an amount: the smallest one. */
+export const DEFAULT_TIER = 'spark';
 
 export const tierById = (id) => TIERS.find((t) => t.id === id) ?? null;
 export const tierByAmount = (amount) => TIERS.find((t) => t.amount != null && t.amount === Number(amount)) ?? null;
