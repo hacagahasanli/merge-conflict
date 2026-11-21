@@ -9,25 +9,25 @@ nalbaki-support {
 /* Before the module loads (or without JavaScript): a plain link, in the space the section will take. */
 nalbaki-support:not(:defined) {
   display: grid;
-  place-content: center;
-  gap: 14px;
+  align-content: center;
+  gap: 16px;
   min-height: 420px;
-  padding: 32px;
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  background: linear-gradient(165deg, #151a3c, #0e1024 55%, var(--bg));
-  text-align: center;
+  padding: 32px 0;
 }
 nalbaki-support[variant='page']:not(:defined) { min-height: 70vh; }
-nalbaki-support:not(:defined) .ns-fallback-h { margin: 0; font-family: var(--display); font-size: clamp(36px, 6vw, 64px); line-height: 1; }
+nalbaki-support:not(:defined) .ns-fallback-h {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  font-size: clamp(48px, 8vw, 104px);
+  line-height: 0.9;
+}
 
 /* Home: the first section, right under the header. The hero below it no longer slides up under the header. */
-.support-first { padding: clamp(14px, 2.4vw, 28px) 0 clamp(28px, 4vw, 48px); }
+.support-first { padding: clamp(28px, 5vw, 64px) 0 clamp(36px, 5vw, 72px); }
 .support-first + .hero { margin-top: 0; }
 
 /* /support */
-.support-page { padding: clamp(20px, 4vw, 48px) 0 clamp(28px, 5vw, 64px); }
-.support-extra { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); margin-top: 24px; }
-.support-extra .card, .support-extra .pack { margin: 0; }
-.support-goes .h3-like { margin: 0 0 12px; }
-.support-goes .pays { margin-bottom: 0; }
+.support-page { padding: clamp(28px, 5vw, 64px) 0 clamp(36px, 6vw, 80px); }
