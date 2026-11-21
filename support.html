@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Support the studio and get help · Nalbaki Games</title>
-    <meta name="description" content="Our games are free. Buy Nalbaki Games a coffee to help make the next one, or get help with Parking Lot, Last Commit Standing and Floor 42: report a bug, ask a question, share feedback." />
+    <title>Support us and get help · Nalbaki Games</title>
+    <meta name="description" content="Our games are free. Support Nalbaki Games to help make the next one, or get help with Parking Lot, Last Commit Standing and Floor 42: report a bug, ask a question, share feedback." />
     <link rel="canonical" href="https://nalbakigames.com/support" />
     <meta name="theme-color" content="#0b0c10" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Nalbaki Games" />
-    <meta property="og:title" content="Support the studio and get help · Nalbaki Games" />
-    <meta property="og:description" content="Our games are free. Buy Nalbaki Games a coffee to help make the next one, or get help with Parking Lot, Last Commit Standing and Floor 42: report a bug, ask a question, share feedback." />
+    <meta property="og:title" content="Support us and get help · Nalbaki Games" />
+    <meta property="og:description" content="Our games are free. Support Nalbaki Games to help make the next one, or get help with Parking Lot, Last Commit Standing and Floor 42: report a bug, ask a question, share feedback." />
     <meta property="og:url" content="https://nalbakigames.com/support" />
     <meta property="og:image" content="https://nalbakigames.com/assets/og.jpg" />
     <meta property="og:image:width" content="1200" />
@@ -23,6 +23,8 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preload" href="/assets/fonts/bricolage-var.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/support-kit.css" />
+    <script type="module" src="/vendor/nalbaki-support/nalbaki-support.js"></script>
     <script>document.documentElement.classList.add('js')</script>
   </head>
   <body>
@@ -63,69 +65,29 @@
     <main id="main">
 
 
-      <section class="coffee" id="coffee" aria-labelledby="coffee-h">
-        <div class="wrap coffee-grid">
-          <div class="coffee-copy">
-            <h1 id="coffee-h" class="coffee-eq display">
-              <span class="eq-row eq-a"><span class="slant">Free games</span></span>
-              <span class="eq-row eq-b"><span class="eq-op" aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20"><path d="M10 3v14M3 10h14" /></svg></span><span class="slant">your coffee</span></span>
-              <span class="eq-row eq-c"><span class="eq-op" aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20"><path d="M3 7h14M3 13h14" /></svg></span><span class="slant">one more round<span class="blade" aria-hidden="true"></span></span></span>
-            </h1>
-            <p class="lead">Every game here is free: no install, no account, no paywall. If one of them made your day, buy us a coffee and help make the next one.</p>
-          </div>
+      <section class="support-page" id="support" aria-label="Support us">
+        <div class="wrap">
+          <nalbaki-support variant="page" heading-level="1" href="https://mergeconflictgames.itch.io/support/purchase" data-src="/support-world.json">
+            <h1 class="ns-fallback-h">Support us</h1>
+            <p>Every game we make is free. If you enjoy them, you can help us make more.</p>
+            <p><a class="btn big" href="https://mergeconflictgames.itch.io/support/purchase" target="_blank" rel="noopener">Support us on itch.io <span class="arrow" aria-hidden="true">&rarr;</span><span class="sr-only"> (opens in a new tab)</span></a></p>
+          </nalbaki-support>
 
-          <div class="cup-card" data-cup>
-            <div class="cup-stage" aria-hidden="true">
-              <svg class="cup-svg" viewBox="0 0 240 190" width="240" height="190">
-                <defs>
-                  <clipPath id="cup-um"><polygon points="-20,-20 84,-20 84,24 -20,40" /></clipPath>
-                  <clipPath id="cup-dm"><polygon points="-20,42.6 84,26.6 84,84 -20,84" /></clipPath>
-                  <clipPath id="cup-in"><path d="M58 70h112l-10 66a26 26 0 0 1-26 22h-40a26 26 0 0 1-26-22z" /></clipPath>
-                </defs>
-                <g class="steam">
-                  <path class="s1" d="M96 58c-8-10 8-16 0-28" />
-                  <path class="s2" d="M116 56c-8-10 8-16 0-30" />
-                  <path class="s3" d="M136 58c-8-10 8-16 0-28" />
-                </g>
-                <ellipse class="saucer-shadow" cx="114" cy="174" rx="92" ry="10" />
-                <ellipse class="saucer" cx="114" cy="164" rx="96" ry="16" />
-                <ellipse class="saucer-rim" cx="114" cy="161" rx="70" ry="9" />
-                <path class="handle" d="M166 86c22-4 34 10 26 28-6 13-20 18-34 16" />
-                <path class="cup" d="M58 70h112l-10 66a26 26 0 0 1-26 22h-40a26 26 0 0 1-26-22z" />
-                <g clip-path="url(#cup-in)">
-                  <rect class="brew" x="40" y="70" width="150" height="100" />
-                  <ellipse class="crema" cx="114" cy="70" rx="58" ry="6" />
-                </g>
-                <path class="cup-band" d="M60 86h108" />
-                <g class="mark" transform="translate(100 108) scale(0.44)"><g clip-path="url(#cup-um)" transform="translate(2.4 -0.6)"><polygon points="3.00,56.00 15.00,8.00 29.00,8.00 40.04,35.84 47.00,8.00 61.00,8.00 49.00,56.00 35.00,56.00 23.96,28.16 17.00,56.00" /></g><g clip-path="url(#cup-dm)" transform="translate(-1.6 0.4)"><polygon points="3.00,56.00 15.00,8.00 29.00,8.00 40.04,35.84 47.00,8.00 61.00,8.00 49.00,56.00 35.00,56.00 23.96,28.16 17.00,56.00" /></g></g>
-                <ellipse class="cup-lip" cx="114" cy="70" rx="56" ry="7" />
-              </svg>
-              <span class="hearts"></span>
+          <div class="support-extra">
+            <div class="card support-goes">
+              <h2 class="h3-like">Where your support goes</h2>
+              <ul class="pays">
+                <li><span class="pay-ico" aria-hidden="true">&#128225;</span><span><b>Servers</b> that keep Floor 42 duels and Last Commit Standing rooms quick.</span></li>
+                <li><span class="pay-ico" aria-hidden="true">&#127918;</span><span><b>New games</b>, from first sketch to the first round you can play.</span></li>
+                <li><span class="pay-ico" aria-hidden="true">&#10024;</span><span><b>Polish</b> on the little details that make you hit Play again.</span></li>
+              </ul>
             </div>
-            <h2 class="cup-title">Pick a coffee</h2>
-            <ul class="cup-chips" role="list">
-                <li><a class="cup-chip" href="https://mergeconflictgames.itch.io/support" target="_blank" rel="noopener" data-amount="3"><span class="cc-emo" aria-hidden="true">&#9749;</span><b>$3</b><span class="cc-say">A coffee</span><span class="sr-only"> (opens itch.io in a new tab)</span></a></li>
-                <li><a class="cup-chip" href="https://mergeconflictgames.itch.io/support" target="_blank" rel="noopener" data-amount="5"><span class="cc-emo" aria-hidden="true">&#129360;</span><b>$5</b><span class="cc-say">Coffee and a croissant</span><span class="sr-only"> (opens itch.io in a new tab)</span></a></li>
-                <li><a class="cup-chip" href="https://mergeconflictgames.itch.io/support" target="_blank" rel="noopener" data-amount="10"><span class="cc-emo" aria-hidden="true">&#127829;</span><b>$10</b><span class="cc-say">Late-night pizza</span><span class="sr-only"> (opens itch.io in a new tab)</span></a></li>
-                <li><a class="cup-chip" href="https://mergeconflictgames.itch.io/support" target="_blank" rel="noopener" data-amount="25"><span class="cc-emo" aria-hidden="true">&#127918;</span><b>$25</b><span class="cc-say">Fuel for the next game</span><span class="sr-only"> (opens itch.io in a new tab)</span></a></li>
-            </ul>
-            <a class="btn big cup-cta" href="https://mergeconflictgames.itch.io/support" target="_blank" rel="noopener" data-amount="">Buy us a coffee on itch.io <span class="arrow" aria-hidden="true">&rarr;</span><span class="sr-only"> (opens in a new tab)</span></a>
-            <p class="cup-hint" aria-live="polite" data-cup-hint>Pay what you want, from $1. Card and PayPal, handled securely by itch.io.</p>
-          </div>
-
-          <div class="coffee-more">
-            <h2 class="h3-like">Where your coffee goes</h2>
-            <ul class="pays">
-              <li><span class="pay-ico" aria-hidden="true">&#128225;</span><span><b>Servers</b> that keep Floor 42 duels and Last Commit Standing rooms quick.</span></li>
-              <li><span class="pay-ico" aria-hidden="true">&#127918;</span><span><b>New games</b>, from first sketch to the first round you can play.</span></li>
-              <li><span class="pay-ico" aria-hidden="true">&#10024;</span><span><b>Polish</b> on the little details that make you hit Play again.</span></li>
-            </ul>
             <div class="pack">
               <div class="pack-imgs" aria-hidden="true">
                 <img class="pk-desk" src="/assets/img/thanks-desktop-960.webp" width="960" height="540" alt="" loading="lazy" decoding="async" />
                 <img class="pk-phone" src="/assets/img/thanks-phone-300.webp" width="300" height="650" alt="" loading="lazy" decoding="async" />
               </div>
-              <p><b>A little thank-you:</b> every supporter gets a desktop and a phone wallpaper.</p>
+              <p><b>A little thank-you:</b> every supporter gets a desktop and a phone wallpaper on itch.io.</p>
             </div>
           </div>
         </div>
@@ -232,7 +194,7 @@
             <ul>
               <li><a href="mailto:hello@nalbakigames.com">hello@nalbakigames.com</a></li>
               <li><a href="/support">Player support</a></li>
-              <li><a href="/support#coffee">Buy us a coffee</a></li>
+              <li><a href="/support#support">Support us</a></li>
               <li><a href="/contact">Start a project</a></li>
             </ul>
           </div>

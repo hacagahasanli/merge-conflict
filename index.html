@@ -35,6 +35,8 @@
       }
     </script>
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/support-kit.css" />
+    <script type="module" src="/vendor/nalbaki-support/nalbaki-support.js"></script>
     <script>document.documentElement.classList.add('js')</script>
   </head>
   <body class="home">
@@ -73,6 +75,16 @@
     </header>
 
     <main id="main">
+      <section class="support-first" id="support" aria-label="Support us">
+        <div class="wrap">
+          <nalbaki-support variant="home" heading-level="2" href="https://mergeconflictgames.itch.io/support/purchase" page-href="/support" data-src="/support-world.json">
+            <p class="ns-fallback-h">Support us</p>
+            <p>Our games are free. If one made your day, you can help us make the next one.</p>
+            <p><a class="btn" href="https://mergeconflictgames.itch.io/support/purchase" target="_blank" rel="noopener">Support us on itch.io <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
+          </nalbaki-support>
+        </div>
+      </section>
+
       <section class="hero" aria-labelledby="hero-h">
         <div class="hero-media">
           <picture>
@@ -330,7 +342,7 @@
               <a href="/support#help-h" class="hb t-bug">Report a bug</a>
               <a href="/support#faq-h" class="hb t-ask">Quick answers</a>
               <a href="/support#help-h" class="hb t-idea">Share feedback</a>
-              <a href="/support#coffee" class="hb t-coffee">Buy us a coffee</a>
+              <a href="/#support" class="hb t-coffee">Support us</a>
             </div>
           </div>
         </div>
@@ -366,7 +378,7 @@
             <ul>
               <li><a href="mailto:hello@nalbakigames.com">hello@nalbakigames.com</a></li>
               <li><a href="/support">Player support</a></li>
-              <li><a href="/support#coffee">Buy us a coffee</a></li>
+              <li><a href="/support">Support us</a></li>
               <li><a href="/contact">Start a project</a></li>
             </ul>
           </div>
