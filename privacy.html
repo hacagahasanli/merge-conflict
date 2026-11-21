@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy · Nalbaki Games</title>
+    <meta name="description" content="What Nalbaki Games counts when you visit the site or play a game, what it never collects, and how to switch counting off on your device." />
+    <link rel="canonical" href="https://nalbakigames.com/privacy" />
+    <meta name="theme-color" content="#0b0c10" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nalbaki Games" />
+    <meta property="og:title" content="Privacy · Nalbaki Games" />
+    <meta property="og:description" content="What Nalbaki Games counts when you visit the site or play a game, what it never collects, and how to switch counting off on your device." />
+    <meta property="og:url" content="https://nalbakigames.com/privacy" />
+    <meta property="og:image" content="https://nalbakigames.com/assets/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Nalbaki Games logo over key art from Parking Lot, Last Commit Standing and Floor 42" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href="/assets/fonts/bricolage-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <script>document.documentElement.classList.add('js')</script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-head">
+      <div class="wrap head-row">
+        <a class="brand" href="/" aria-label="Nalbaki Games, home"><img src="/assets/brand/nalbaki-logo-on-dark.svg" width="182" height="42" alt="" /></a>
+        <nav class="nav" aria-label="Main">
+          <a href="/games">Games</a>
+          <a href="/about">Studio</a>
+          <a href="/services">Services</a>
+          <a href="/work">Work</a>
+          <a href="/press">Press</a>
+          <a href="/support">Support</a>
+          <a href="/contact">Contact</a>
+        </nav>
+        <a class="btn small head-cta" href="/games">Play free <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="label">Menu</span><span class="bars" aria-hidden="true"></span></button>
+      </div>
+      <div class="menu-panel" id="menu">
+        <nav aria-label="Main, phone">
+          <a href="/">Home</a>
+          <a href="/games">Games</a>
+          <a href="/about">Studio</a>
+          <a href="/services">Services</a>
+          <a href="/work">Work</a>
+          <a href="/press">Press</a>
+          <a href="/support">Support</a>
+          <a href="/contact">Contact</a>
+        </nav>
+        <div class="menu-foot">
+          <a href="mailto:hello@nalbakigames.com">hello@nalbakigames.com</a>
+          <a href="/contact">Start a project</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <section class="page-head">
+        <div class="wrap">
+          <h1>Privacy<span class="blade" aria-hidden="true"></span></h1>
+          <p class="lead">We count visits so we know which games people enjoy. We do not use cookies on our pages, we never keep your IP address, and there is no account to make.</p>
+        </div>
+      </section>
+
+      <section class="section tight" aria-labelledby="count-h">
+        <div class="wrap grid two">
+          <div class="card">
+            <h2 id="count-h" class="h3-like">What we count</h2>
+            <ul class="ticks">
+              <li>Which pages and games are opened, and whether a game loads and how fast.</li>
+              <li>Rounds played and how they ended, how long a visit lasts, and whether you come back another day.</li>
+              <li>Your device type (phone, tablet or computer), operating system and browser family, and your screen size in three rough steps.</li>
+              <li>Your country, which Cloudflare works out from your connection. We never see or keep the IP address behind it.</li>
+              <li>The website you came from (its name only, never the full address) and the campaign tag on a link, if there is one.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2 class="h3-like">What we never do</h2>
+            <ul class="ticks">
+              <li>No cookies on the public pages, no advertising, no tracking across other websites.</li>
+              <li>No names, emails, accounts or IP addresses in our records.</li>
+              <li>No selling or sharing of the numbers. They stay on our own server, and only the studio owner can open them.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tight" aria-labelledby="how-h">
+        <div class="wrap grid two">
+          <div class="card">
+            <h2 id="how-h" class="h3-like">How it works</h2>
+            <p>Your browser keeps a random number, a label with no meaning outside this counter, for up to 13 months, so we can tell a new player from a returning one. A second random number lasts for one visit in one tab.</p>
+            <p class="muted" style="margin-top: 12px">The numbers go to our own server at stats.nalbakigames.com. Raw records are kept for up to 13 months and then deleted; only totals with no ids stay. When the game runs on a game portal such as CrazyGames, it sends nothing to us.</p>
+          </div>
+          <div class="card" id="opt-out">
+            <h2 class="h3-like">Switch it off</h2>
+            <p>Counting is already off if your browser sends Global Privacy Control, and for automated browsers. You can also turn it off for this device and browser here. It also clears the random number we stored.</p>
+            <p class="muted" style="margin-top: 12px">Another way: open any page of ours with <code>?nostats</code> at the end of the address.</p>
+            <div class="actions">
+              <button class="btn" type="button" data-stats-toggle>Stop counting this device</button>
+            </div>
+            <p role="status" aria-live="polite" data-stats-status style="margin-top: 12px"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tight">
+        <div class="wrap">
+          <p class="muted">Questions or a request about your data: <a href="mailto:hello@nalbakigames.com">hello@nalbakigames.com</a>. Last updated 21 November 2026.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-foot">
+      <div class="wrap">
+        <div class="foot-top">
+          <div class="foot-pitch">
+            <p>Original games, straight to your browser. Free to play.</p>
+            <a class="btn" href="/games">Pick a game <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+          <nav aria-label="Games">
+            <h2>Play</h2>
+            <ul>
+              <li><a href="https://parkinglot.nalbakigames.com/">Parking Lot</a></li>
+              <li><a href="https://lastcommit.nalbakigames.com/play">Last Commit Standing</a></li>
+              <li><a href="https://floor42.nalbakigames.com/characters">Floor 42</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Studio">
+            <h2>Studio</h2>
+            <ul>
+              <li><a href="/about">About</a></li>
+              <li><a href="/services">Services</a></li>
+              <li><a href="/work">Work</a></li>
+              <li><a href="/press">Press kit</a></li>
+            </ul>
+          </nav>
+          <div>
+            <h2>Say hello</h2>
+            <ul>
+              <li><a href="mailto:hello@nalbakigames.com">hello@nalbakigames.com</a></li>
+              <li><a href="/support">Player support</a></li>
+              <li><a href="/support#coffee">Buy us a coffee</a></li>
+              <li><a href="/contact">Start a project</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-word"><img src="/assets/brand/nalbaki-wordmark-on-dark.svg" width="1200" height="347" alt="" loading="lazy" decoding="async" /></div>
+        <div class="legal"><span>&copy; 2026 Nalbaki Games</span><span>One more round.</span><a href="/privacy">Privacy</a></div>
+      </div>
+    </footer>
+    <script src="/assets/t.js?v=1" defer></script>
+    <script src="/site.js" defer></script>
+  </body>
+</html>
